@@ -1,0 +1,106 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@tripstore.com",
+      "password": "password123",
+      "name": "Admin User"
+    },
+    {
+      "id": 2,
+      "email": "ahmed@example.com",
+      "password": "123",
+      "name": "Ahmed Ali"
+    },
+    {
+      "id": 3,
+      "email": "sara@example.com",
+      "password": "123",
+      "name": "Sara Kamel"
+    },
+    {
+      "id": 4,
+      "email": "test@test.com",
+      "password": "123",
+      "name": "Test User"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Fishing Trip",
+      "slug": "fishing",
+      "imageUrl": "https://images.unsplash.com/photo-1544254636-f38b4382cc68?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 2,
+      "name": "Desert Safari",
+      "slug": "safari",
+      "imageUrl": "https://images.unsplash.com/photo-1521743058814-1b4e2b02e6c5?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "id": 3,
+      "name": "Scuba Diving",
+      "slug": "diving",
+      "imageUrl": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=400"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "categoryId": 1,
+      "title": "Carbon Fiber Fishing Rod",
+      "price": 120,
+      "rating": 4.8,
+      "imageUrl": "https://images.unsplash.com/photo-1599839619722-39751411ea63?auto=format&fit=crop&q=80&w=400",
+      "description": "Lightweight and durable rod for sea fishing."
+    },
+    {
+      "id": 2,
+      "categoryId": 1,
+      "title": "Professional Lure Set",
+      "price": 45,
+      "rating": 4.5,
+      "imageUrl": "https://images.unsplash.com/photo-1610486616010-86d140656a1b?auto=format&fit=crop&q=80&w=400",
+      "description": "A set of 50 artificial lures for catching big fish."
+    },
+    {
+      "id": 3,
+      "categoryId": 2,
+      "title": "4-Person Camping Tent",
+      "price": 250,
+      "rating": 4.9,
+      "imageUrl": "https://images.unsplash.com/photo-1504280502226-f4c9c7731459?auto=format&fit=crop&q=80&w=400",
+      "description": "Weather-resistant, easy to setup tent."
+    },
+    {
+      "id": 4,
+      "categoryId": 2,
+      "title": "LED Camping Lantern",
+      "price": 35,
+      "rating": 4.7,
+      "imageUrl": "https://images.unsplash.com/photo-1520113412543-9b884d6326bb?auto=format&fit=crop&q=80&w=400",
+      "description": "Rechargeable lantern with 3 brightness levels."
+    },
+    {
+      "id": 5,
+      "categoryId": 3,
+      "title": "Diving Mask & Snorkel",
+      "price": 60,
+      "rating": 4.6,
+      "imageUrl": "https://images.unsplash.com/photo-1528150177508-7cc0c36cda5c?auto=format&fit=crop&q=80&w=400",
+      "description": "Anti-fog diving mask with a comfortable silicone fit."
+    },
+    {
+      "id": 6,
+      "categoryId": 3,
+      "title": "Waterproof Action Camera",
+      "price": 199,
+      "rating": 4.9,
+      "imageUrl": "https://images.unsplash.com/photo-1500634245200-e5245c7574ef?auto=format&fit=crop&q=80&w=400",
+      "description": "Capture your underwater adventure in 4K resolution."
+    }
+  ],
+  "cart": [],
+  "orders": []
+}
