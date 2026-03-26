@@ -11,15 +11,39 @@
   "trips": [
     {
       "id": 1,
-      "name": "Fishing Trip",
+      "name": "Picnic",
       "description": "Everything you need for a great fishing experience in the open sea.",
-      "imageUrl": "fishing-trip.jpg"
+      "imageUrl": "categories/picnic.png"
     },
     {
       "id": 2,
-      "name": "Desert Safari",
+      "name": "Beach",
       "description": "Camping and safari gear for desert adventures.",
-      "imageUrl": "safari-trip.jpg"
+      "imageUrl": "categories/beach.png"
+    },
+    {
+      "id": 3,
+      "name": "BBQ",
+      "description": "Camping and safari gear for desert adventures.",
+      "imageUrl": "categories/bbq.png"
+    },
+    {
+      "id": 4,
+      "name": "Camping",
+      "description": "Camping and safari gear for desert adventures.",
+      "imageUrl": "categories/camping.png"
+    },
+    {
+      "id": 5,
+      "name": "Fishing",
+      "description": "Camping and safari gear for desert adventures.",
+      "imageUrl": "categories/fishing.png"
+    },
+    {
+      "id": 6,
+      "name": "Hiking",
+      "description": "Camping and safari gear for desert adventures.",
+      "imageUrl": "categories/hiking.png"
     }
   ],
   "products": [
