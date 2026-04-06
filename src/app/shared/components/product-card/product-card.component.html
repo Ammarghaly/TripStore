@@ -1,0 +1,17 @@
+<div class="card h-100 shadow-sm border-0">
+  <img [src]="products.imageUrl" class="card-img-top" style="height: 180px; object-fit: cover" />
+
+  <div class="card-body d-flex flex-column">
+    <h6 class="fw-bold">{{ products.name }}</h6>
+
+    <div class="mt-auto">
+      <h6 class="fw-bold">{{ products.price }} $</h6>
+
+      <button 
+        class="btn btn-outline-success w-100"
+        (click)="onAddToCart()">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

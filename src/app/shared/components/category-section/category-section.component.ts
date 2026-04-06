@@ -13,4 +13,5 @@ export class CategorySectionComponent implements OnInit{
    ngOnInit(): void {
      this.categoryService.getCategories()
    }
+  
 }

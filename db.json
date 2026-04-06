@@ -54,7 +54,7 @@
       "price": 120.5,
       "stock": 15,
       "tripIds": [1],
-      "imageUrl": "rod.jpg"
+      "imageUrl": "products/basketwande.png"
     },
     {
       "id": 2,
@@ -63,7 +63,7 @@
       "price": 45.0,
       "stock": 30,
       "tripIds": [1],
-      "imageUrl": "box.jpg"
+      "imageUrl": "products/boiller.png"
     },
     {
       "id": 3,
@@ -72,7 +72,7 @@
       "price": 15.0,
       "stock": 50,
       "tripIds": [1, 2],
-      "imageUrl": "hat.jpg"
+      "imageUrl": "products/coastSea.jpg"
     },
     {
       "id": 4,
@@ -81,7 +81,16 @@
       "price": 250.0,
       "stock": 10,
       "tripIds": [2],
-      "imageUrl": "tent.jpg"
+      "imageUrl": "products/tent.png"
+    },
+    {
+      "id": 5,
+      "name": "4-Person Camping Tent",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250.0,
+      "stock": 10,
+      "tripIds": [2],
+      "imageUrl": "products/griller.png"
     }
   ],
   "carts": [
