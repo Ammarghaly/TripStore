@@ -2,10 +2,31 @@
   "users": [
     {
       "id": 1,
-      "email": "user@example.com",
-      "password": "123456",
+      "email": "user1@example.com",
+      "password": "password123",
       "name": "John Doe",
-      "shippingAddress": "New York, USA"
+      "shippingAddress": "123 Main St, New York, USA"
+    },
+    {
+      "id": 2,
+      "email": "user2@example.com",
+      "password": "securePass",
+      "name": "Jane Smith",
+      "shippingAddress": "456 Elm St, Los Angeles, USA"
+    },
+    {
+      "id": 3,
+      "email": "user3@example.com",
+      "password": "complexPwd",
+      "name": "David Lee",
+      "shippingAddress": "789 Oak St, Chicago, USA"
+    },
+    {
+      "id": 4,
+      "email": "admin@example.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "shippingAddress": "Admin HQ"
     }
   ],
   "trips": [
@@ -20,6 +41,12 @@
       "name": "Desert Safari",
       "description": "Camping and safari gear for desert adventures.",
       "imageUrl": "safari-trip.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mountain Climbing",
+      "description": "Equipment for mountain adventures and climbing.",
+      "imageUrl": "mountain-climbing.jpg"
     }
   ],
   "products": [
@@ -29,35 +56,55 @@
       "description": "Flexible carbon fiber rod, handles heavy weights.",
       "price": 120.5,
       "stock": 15,
-      "tripIds": [1],
+      "tripIds": [
+        1
+      ],
       "imageUrl": "rod.jpg"
     },
     {
       "id": 2,
       "name": "Tackle Box",
       "description": "Compartmentalized box for baits and hooks.",
-      "price": 45.0,
+      "price": 45,
       "stock": 30,
-      "tripIds": [1],
+      "tripIds": [
+        1
+      ],
       "imageUrl": "box.jpg"
     },
     {
       "id": 3,
       "name": "Sun Protection Hat",
       "description": "Wide-brimmed hat to protect face and head from the sun.",
-      "price": 15.0,
+      "price": 15,
       "stock": 50,
-      "tripIds": [1, 2],
+      "tripIds": [
+        1,
+        2
+      ],
       "imageUrl": "hat.jpg"
     },
     {
       "id": 4,
       "name": "4-Person Camping Tent",
       "description": "Pop-up tent, wind resistant.",
-      "price": 250.0,
+      "price": 250,
       "stock": 10,
-      "tripIds": [2],
+      "tripIds": [
+        2
+      ],
       "imageUrl": "tent.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Climbing Shoes",
+      "description": "High-grip climbing shoes for safety.",
+      "price": 99.99,
+      "stock": 20,
+      "tripIds": [
+        3
+      ],
+      "imageUrl": "climbing-shoes.jpg"
     }
   ],
   "carts": [
@@ -73,7 +120,18 @@
         {
           "productId": 3,
           "quantity": 2,
-          "price": 15.0
+          "price": 15
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "items": [
+        {
+          "productId": 4,
+          "quantity": 1,
+          "price": 250
         }
       ]
     }
@@ -85,7 +143,7 @@
       "orderDate": "2023-10-25T10:30:00Z",
       "status": "Paid",
       "totalAmount": 150.5,
-      "shippingAddress": "New York, USA",
+      "shippingAddress": "123 Main St, New York, USA",
       "items": [
         {
           "productId": 1,
@@ -95,7 +153,37 @@
         {
           "productId": 3,
           "quantity": 2,
-          "priceAtPurchase": 15.0
+          "priceAtPurchase": 15
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "orderDate": "2023-11-01T15:45:00Z",
+      "status": "Shipped",
+      "totalAmount": 250,
+      "shippingAddress": "456 Elm St, Los Angeles, USA",
+      "items": [
+        {
+          "productId": 4,
+          "quantity": 1,
+          "priceAtPurchase": 250
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "orderDate": "2023-11-05T08:00:00Z",
+      "status": "Pending",
+      "totalAmount": 99.99,
+      "shippingAddress": "123 Main St, New York, USA",
+      "items": [
+        {
+          "productId": 5,
+          "quantity": 1,
+          "priceAtPurchase": 99.99
         }
       ]
     }

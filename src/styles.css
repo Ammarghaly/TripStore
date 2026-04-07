@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  background-color: #0b0f19 !important;
+  color: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+}
+
+.metric-card {
+  background-color: #121826 !important;
+  border: 1px solid #1f2937 !important;
+  border-radius: 12px;
+}
+
+.metric-card h2 {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.metric-card p {
+  color: #9ca3af !important;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.table-container {
+  background-color: #121826 !important;
+  border: 1px solid #1f2937 !important;
+  overflow: hidden;
+}
+
+.table {
+  color: #e5e5e5 !important;
+}
+
+.table thead {
+  background-color: transparent !important;
+  border-bottom: 1px solid #1f2937;
+}
+
+.table th {
+  color: #6b7280 !important;
+  font-size: 11px;
+  letter-spacing: 1px;
+  background-color: transparent !important;
+  border-bottom: 1px solid #1f2937 !important;
+}
+
+.table td {
+  color: #d1d5db !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid #1f2937 !important;
+  font-size: 13px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.btn-success.custom-add-btn {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+.btn-success.custom-add-btn:hover {
+  background-color: #059669 !important;
+}
+
+.cat-card, .metric-card, .table-container {
+  background-color: #0d111c !important;
+  border-color: #1f2937 !important;
+}
+
+.icon-box, .cat-icon-box {
+  background-color: #161e2e !important;
+  border-color: #1f2937 !important;
+}
+
+.icon-box i, .cat-icon-box i {
+  color: #10b981 !important;
+}
+
+.text-success {
+  color: #10b981 !important;
+}
+
+.bg-success {
+  background-color: #10b981 !important;
+}
+
+.status-shipped {
+  color: #10b981 !important;
+}
+
+.status-pending {
+  color: #ef4444 !important;
+}
+
+.text-danger {
+  color: #ef4444 !important;
+}
+
+.main-wrapper {
+  margin-left: 220px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 28px 28px !important;
+  flex: 1;
+}
+
+.status-default {
+  color: #9ca3af !important;
+}
+
+h4 { font-size: 18px !important; }
+h5 { font-size: 15px !important; }
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
