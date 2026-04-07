@@ -1,0 +1,74 @@
+<div class="test-card">
+  <h3>📦 Product Service Test</h3>
+
+  <div class="filter-section">
+    <div class="input-row">
+      <input
+        type="text"
+        placeholder="Search by product name"
+        [(ngModel)]="filters.keyword"
+        class="input-field"
+      />
+      <button (click)="searchProducts()" [disabled]="loading" class="btn btn-primary">
+        {{ loading ? '...' : 'Search' }}
+      </button>
+    </div>
+
+    <div class="input-row">
+      <input
+        type="number"
+        placeholder="Min Price"
+        [(ngModel)]="filters.minPrice"
+        class="input-field"
+        style="flex: 0.5"
+      />
+      <input
+        type="number"
+        placeholder="Max Price"
+        [(ngModel)]="filters.maxPrice"
+        class="input-field"
+        style="flex: 0.5"
+      />
+      <button (click)="filterByPrice()" [disabled]="loading" class="btn btn-primary">
+        {{ loading ? '...' : 'Filter' }}
+      </button>
+    </div>
+
+    <div class="input-row">
+      <select [(ngModel)]="filters.sortField" class="input-field" style="flex: 0.5">
+        <option value="price">Sort by Price</option>
+        <option value="name">Sort by Name</option>
+      </select>
+      <select [(ngModel)]="filters.sortOrder" class="input-field" style="flex: 0.5">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+      <button (click)="sortProducts()" [disabled]="loading" class="btn btn-primary">
+        {{ loading ? '...' : 'Sort' }}
+      </button>
+    </div>
+
+    <div class="input-row">
+      <button (click)="loadAllProducts()" [disabled]="loading" class="btn btn-secondary">
+        {{ loading ? '...' : 'Load All Products' }}
+      </button>
+      <button (click)="clearResults()" class="btn btn-danger">Clear</button>
+    </div>
+  </div>
+
+  <div *ngIf="message" class="message" [ngClass]="messageType">
+    {{ message }}
+  </div>
+
+  <div *ngIf="products.length > 0" class="products-list">
+    <div class="product-item" *ngFor="let product of products">
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-price">${{ product.price }}</div>
+      <div class="product-stock">Stock: {{ product.stock }}</div>
+    </div>
+  </div>
+
+  <div *ngIf="products.length === 0 && !loading && message" class="empty-state">
+    No products found
+  </div>
+</div>

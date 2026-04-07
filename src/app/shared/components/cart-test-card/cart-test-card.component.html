@@ -1,0 +1,66 @@
+<div class="test-card">
+  <h3>🛒 Cart Service Test</h3>
+
+  <div *ngIf="!isAuthenticated()" class="warning-message">
+    ⚠️ Please login first to test cart functionality
+  </div>
+
+  <div *ngIf="isAuthenticated()" class="cart-controls">
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Product ID"
+        [(ngModel)]="newItem.productId"
+        class="input-field"
+        style="flex: 0.4"
+      />
+      <input
+        type="number"
+        placeholder="Quantity"
+        [(ngModel)]="newItem.quantity"
+        class="input-field"
+        style="flex: 0.3"
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        [(ngModel)]="newItem.price"
+        class="input-field"
+        style="flex: 0.3"
+      />
+      <button (click)="addItem()" [disabled]="loading" class="btn btn-primary">
+        {{ loading ? '...' : 'Add Item' }}
+      </button>
+    </div>
+
+    <div class="input-group">
+      <button (click)="loadCart()" [disabled]="loading" class="btn btn-secondary">
+        {{ loading ? '...' : 'Refresh Cart' }}
+      </button>
+      <button (click)="clearCart()" [disabled]="loading" class="btn btn-danger">
+        {{ loading ? '...' : 'Clear Cart' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="message" [ngClass]="{ message: true, messageType }">
+    {{ message }}
+  </div>
+
+  <div *ngIf="cart && cart.details.length > 0" class="cart-items">
+    <div class="cart-item" *ngFor="let item of cart.details">
+      <div class="item-info">
+        <div class="item-name">{{ item.product?.name || 'Product ' + item.productId }}</div>
+        <div class="item-details">
+          <span>Qty: {{ item.quantity }}</span>
+          <span>Price: ${{ item.price }}</span>
+        </div>
+      </div>
+      <button (click)="removeItem(item.productId)" [disabled]="loading" class="btn-remove">
+        ✕
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="cart && cart.details.length === 0" class="empty-cart">🛒 Cart is empty</div>
+</div>

@@ -1,0 +1,154 @@
+<div class="checkout-container py-5">
+  <div class="container custom-grid">
+    <div class="row mb-5">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/cart" class="text-success text-decoration-none">Cart</a></li>
+            <li class="breadcrumb-item active text-success font-weight-bold" aria-current="page">Checkout</li>
+          </ol>
+        </nav>
+        <h1 class="text-white display-5 fw-bold mb-2">Complete Your Booking</h1>
+        <p class="text-secondary subtitle-text">Review your premium selection and secure your next adventure.</p>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <!-- Left Column: Form -->
+      <div class="col-lg-7 form-column">
+        <!-- Section 1 -->
+        <h4 class="section-title text-white mb-4">
+          <span class="step-badge">1</span> Shipping Information
+        </h4>
+        <div class="row g-4 mb-5">
+          <div class="col-md-6">
+            <label class="form-label text-secondary">Full Name</label>
+            <input type="text" class="form-control custom-input" placeholder="John Wick" [(ngModel)]="checkoutData.fullName">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary">Email Address</label>
+            <input type="email" class="form-control custom-input" placeholder="john@continental.com" [(ngModel)]="checkoutData.email">
+          </div>
+          <div class="col-12">
+            <label class="form-label text-secondary">Destination Address</label>
+            <input type="text" class="form-control custom-input" placeholder="123 Nomad Street, Wanderlust District" [(ngModel)]="checkoutData.address">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary">City</label>
+            <input type="text" class="form-control custom-input" placeholder="Reykjavik" [(ngModel)]="checkoutData.city">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary">Zip Code</label>
+            <input type="text" class="form-control custom-input" placeholder="101" [(ngModel)]="checkoutData.zip">
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <h4 class="section-title text-white mb-4">
+          <span class="step-badge">2</span> Payment Method
+        </h4>
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div class="payment-card p-3 d-flex align-items-center rounded" [class.selected]="checkoutData.paymentMethod === 'creditCard'" (click)="checkoutData.paymentMethod = 'creditCard'">
+              <input class="form-check-input mt-0 me-3 custom-radio" type="radio" value="creditCard" [(ngModel)]="checkoutData.paymentMethod" id="creditCard">
+              <label class="form-check-label text-white w-100" for="creditCard">
+                 Credit Card
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="payment-card p-3 d-flex align-items-center rounded" [class.selected]="checkoutData.paymentMethod === 'paypal'" (click)="checkoutData.paymentMethod = 'paypal'">
+              <input class="form-check-input mt-0 me-3 custom-radio" type="radio" value="paypal" [(ngModel)]="checkoutData.paymentMethod" id="paypal">
+              <label class="form-check-label text-white w-100" for="paypal">
+                 PayPal
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row g-4 mb-5" *ngIf="checkoutData.paymentMethod === 'creditCard'">
+          <div class="col-12">
+            <label class="form-label text-secondary">Card Number</label>
+            <div class="input-group">
+               <input type="text" class="form-control custom-input border-end-0" placeholder="0000 0000 0000 0000" [(ngModel)]="checkoutData.cardNumber">
+               <span class="input-group-text custom-input border-start-0 pe-3 bg-transparent">
+                  <div class="card-icons d-flex gap-1">
+                     <div class="card-icon-box" style="background: #444;"></div>
+                     <div class="card-icon-box" style="background: #555;"></div>
+                  </div>
+               </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary">Expiry Date</label>
+            <input type="text" class="form-control custom-input" placeholder="MM / YY" [(ngModel)]="checkoutData.expiry">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label text-secondary">CVC</label>
+            <input type="text" class="form-control custom-input" placeholder="123" [(ngModel)]="checkoutData.cvc">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Summary -->
+      <div class="col-lg-5">
+        <div class="order-summary-card p-4 rounded-4">
+          <h4 class="text-white mb-4 fs-5 fw-bold">Order Summary</h4>
+          
+          <ng-container *ngIf="cartDetails.length > 0; else emptyCart">
+            <div *ngFor="let item of cartDetails" class="order-item d-flex align-items-center mb-4">
+              <div class="item-img rounded me-3 bg-secondary d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; overflow: hidden; background: #fff !important;">
+                <img [src]="item.product?.imageUrl || 'assets/placeholder.png'" alt="Product" class="img-fluid w-100 h-100 object-fit-cover">
+              </div>
+              <div class="item-details flex-grow-1">
+                <h6 class="text-white mb-1 fs-6">{{ item.product?.name || 'Unknown Item' }}</h6>
+                <small class="text-secondary" style="font-size: 0.8rem;">Qty: {{ item.quantity }} &bull; SKU: TRP-{{ item.productId.toString().padStart(3, '0') }}</small>
+              </div>
+              <div class="item-price text-white fw-bold">${{ (item.price * item.quantity) | number:'1.2-2' }}</div>
+            </div>
+          </ng-container>
+
+          <ng-template #emptyCart>
+            <div class="text-center text-secondary py-3">Your cart is empty.</div>
+          </ng-template>
+
+          <hr class="custom-hr my-4" *ngIf="cartDetails.length > 0">
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Subtotal</span>
+            <span class="text-white fw-medium">${{ subtotal | number:'1.2-2' }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Tax (12%)</span>
+            <span class="text-white fw-medium">${{ tax | number:'1.2-2' }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-4">
+            <span class="text-secondary">Booking Fee / Shipping</span>
+            <span class="text-success fw-bold">FREE</span>
+          </div>
+
+          <hr class="custom-hr my-4">
+
+          <div class="d-flex justify-content-between mb-4 align-items-center">
+            <span class="text-white fw-bold fs-5">Total Price</span>
+            <span class="text-white fw-bold fs-3">${{ total | number:'1.2-2' }}</span>
+          </div>
+
+          <button class="btn btn-success confirm-btn w-100 py-3 rounded-3 fw-bold mb-3 d-flex justify-content-center align-items-center gap-2" 
+                  [disabled]="cartDetails.length === 0 || isProcessing"
+                  (click)="onConfirm()">
+            <span *ngIf="isProcessing" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            {{ isProcessing ? 'PROCESSING...' : 'CONFIRM BOOKING' }}
+            <svg *ngIf="!isProcessing" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+            </svg>
+          </button>
+          
+          <div class="text-center">
+            <small class="text-secondary fw-medium" style="font-size: 0.65rem; letter-spacing: 1px;">SECURE SSL ENCRYPTED TRANSACTION</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
