@@ -1,0 +1,66 @@
+<div class="order-summary-card p-4 text-white">
+  <h4 class="summary-title fw-bold mb-4">Order Summary</h4>
+  
+  <!-- Cost Breakdown -->
+  <div class="d-flex justify-content-between mb-3 summary-row">
+    <span class="text-secondary opacity-75">Subtotal</span>
+    <span class="fw-bold">${{ subtotal | number:'1.2-2' }}</span>
+  </div>
+  <div class="d-flex justify-content-between mb-3 summary-row align-items-center">
+    <span class="text-secondary opacity-75">Shipping</span>
+    <span class="fw-bold fs-small text-success shipping-text text-end">Calculated at checkout</span>
+  </div>
+  <div class="d-flex justify-content-between mb-4 pb-4 border-bottom border-white border-opacity-10 summary-row">
+    <span class="text-secondary opacity-75">Tax</span>
+    <span class="fw-bold">${{ tax | number:'1.2-2' }}</span>
+  </div>
+
+  <!-- Total -->
+  <div class="d-flex justify-content-between mb-4 align-items-center">
+    <span class="fs-4 fw-bold">Total</span>
+    <span class="fs-3 fw-bold total-price">${{ total | number:'1.2-2' }}</span>
+  </div>
+
+  <!-- Promo Code Section -->
+  <div class="promo-section mb-4">
+    <p class="text-secondary text-uppercase fw-bold small opacity-75 mb-2">Promo Code</p>
+    <div class="d-flex gap-2">
+      <input type="text" class="form-control promo-input-v2" placeholder="Enter code" [(ngModel)]="promoCode">
+      <button class="btn btn-apply px-4 fw-bold" (click)="onApplyPromo()">Apply</button>
+    </div>
+  </div>
+
+  <!-- Checkout Button -->
+  <button class="btn w-100 fw-bold py-3 mb-5 checkout-btn-v2 d-flex align-items-center justify-content-center gap-2" routerLink="/checkout">
+    <span>Proceed to Checkout</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+    </svg>
+  </button>
+
+  <!-- Trust Badges -->
+  <div class="trust-badges d-flex flex-column gap-3">
+    <div class="d-flex align-items-center gap-3 trust-item">
+      <div class="icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="m-0 fw-bold small">Secure Checkout</p>
+        <p class="m-0 text-secondary smaller">Encrypted 256-bit SSL connection</p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center gap-3 trust-item">
+      <div class="icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="m-0 fw-bold small">Free Shipping</p>
+        <p class="m-0 text-secondary smaller">On orders above $300.00</p>
+      </div>
+    </div>
+  </div>
+</div>

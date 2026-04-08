@@ -1,0 +1,155 @@
+:host {
+  display: block;
+  background-color: #121413; /* Overall dark background */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.checkout-container {
+  background-color: #121413;
+}
+
+.custom-grid {
+  max-width: 1000px; /* Aligns with proportional screenshot */
+}
+
+/* Typography Overrides */
+.text-success {
+  color: #2ac368 !important; /* Vivid green */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #6c757d;
+  content: " \003E ";
+  font-size: 0.8rem;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline !important;
+}
+
+.subtitle-text {
+  font-size: 1rem;
+  letter-spacing: -0.2px;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background-color: #2ac368;
+  color: #121413;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-right: 0.6rem;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.2px;
+}
+
+/* Forms */
+.custom-input {
+  background-color: #1c1e1d;
+  border: 1px solid #2e3230;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.custom-input::placeholder {
+  color: #555;
+  font-weight: 500;
+}
+
+.custom-input:focus {
+  background-color: #242725;
+  border-color: #4a504d;
+  box-shadow: 0 0 0 0.1rem rgba(42, 195, 104, 0.2);
+  color: #fff;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.input-group-text.custom-input {
+  background-color: #1c1e1d;
+  border: 1px solid #2e3230;
+}
+
+/* Payment Selector */
+.payment-card {
+  background-color: #1c1e1d;
+  border: 1px solid #2e3230;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-card.selected {
+  border-color: #2ac368;
+  background-color: rgba(42, 195, 104, 0.05);
+}
+
+.custom-radio {
+  accent-color: #2ac368;
+  width: 16px;
+  height: 16px;
+  background-color: #1c1e1d;
+  border: 2px solid #555;
+  cursor: pointer;
+}
+
+.custom-radio:checked {
+  background-color: #2ac368;
+  border-color: #2ac368;
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.card-icon-box {
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Order Summary */
+.order-summary-card {
+  background-color: #1b1d1c;
+  border: 1px solid #2a2c2b;
+}
+
+.custom-hr {
+  border-color: #2e3230;
+  border-top-width: 1px;
+  opacity: 1;
+}
+
+.confirm-btn {
+  background-color: #2ac368;
+  border: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+.confirm-btn:hover {
+  background-color: #24aa5a;
+}

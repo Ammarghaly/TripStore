@@ -1,0 +1,100 @@
+.cart-item-card {
+  background-color: #1a1b1e;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.cart-item-card:hover {
+  background-color: #212226;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.item-img-container {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 12px !important;
+  background-color: #fff !important;
+  padding: 10px;
+}
+
+.item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.item-title {
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  font-weight: 700 !important;
+}
+
+.item-variant {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem !important;
+}
+
+.custom-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-in-stock {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e !important;
+}
+
+.badge-eco {
+  background-color: rgba(6, 95, 70, 0.3) !important;
+  color: #10b981 !important;
+}
+
+.status-text {
+  font-weight: 500;
+}
+
+/* Quantity Selector Styling */
+.qty-selector {
+  background-color: #0d0e10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+}
+
+.qty-number {
+  min-width: 32px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.qty-selector button {
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.qty-selector button:hover {
+  color: #fff !important;
+}
+
+/* Price & Remove */
+.price-v2 {
+  font-size: 1.5rem;
+}
+
+.remove-btn {
+  color: #4b5563 !important;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: #ef4444 !important;
+}

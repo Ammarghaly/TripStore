@@ -1,0 +1,105 @@
+.cart-page-wrapper {
+  background-color: #0d0e10;
+  min-height: 100vh;
+  color: white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Styling */
+.main-header {
+  background-color: #121316;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #22c55e !important;
+}
+
+.nav-link-v2 {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link-v2:hover {
+  color: white;
+}
+
+.magic-badge {
+  background-color: #1a1b1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.v-divider {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.remix-btn {
+  background-color: #2d2e32;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.search-box-v2 {
+  background-color: #1a1b1e;
+  border-radius: 8px;
+  max-width: 240px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.small-input {
+  font-size: 0.85rem;
+  padding-left: 0 !important;
+}
+
+.cart-icon-v2, .user-icon-v2 {
+  background-color: #1a1b1e;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cart-icon-v2:hover, .user-icon-v2:hover {
+  background-color: #2d2e32;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.65rem;
+  padding: 4px 6px;
+  transform: translate(25%, -25%);
+}
+
+/* Main Content */
+.cart-title {
+  font-size: 2.8rem;
+  letter-spacing: -1.5px;
+}
+
+.continue-shopping-btn {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.continue-shopping-btn:hover {
+  color: white;
+  transform: translateX(-4px);
+}
+
+.sticky-top {
+  z-index: 10;
+}
+
+.empty-cart-msg {
+  background-color: #1a1b1e;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+}
