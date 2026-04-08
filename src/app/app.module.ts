@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app.component';
@@ -26,6 +26,7 @@ import { BookingsListComponent } from './features/bookings/bookings-list.compone
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: [

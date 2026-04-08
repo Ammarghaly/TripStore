@@ -24,6 +24,34 @@
 .card-image { height: 140px; background-size: cover; background-position: center; }
 .card-body { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15)); }
 
+/* Make dividers and subtle lines more visible on dark background */
+.booking-card .card-body,
+.booking-card {
+  border: 1px solid rgba(255,255,255,0.025);
+}
+.booking-card .card-body {
+  padding: 18px;
+}
+.booking-card hr,
+.booking-card .border-top {
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Improve label contrast */
+.booking-card .card-body small,
+.booking-card .card-body .text-muted {
+  color: rgba(255,255,255,0.62) !important;
+}
+.booking-card .card-body .fw-medium,
+.booking-card .card-body h5 { color: #e9f7ef; }
+
+/* make the thin lines visible under summary and totals */
+.booking-card .total,
+.booking-card .total-row {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+
 .hero-card { background: linear-gradient(180deg, rgba(6,10,8,0.7), rgba(4,6,5,0.9)); border: 1px solid rgba(255,255,255,0.03); }
 .bg-gradient-dark { background: linear-gradient(180deg,#07120f,#071615); }
 
@@ -32,6 +60,35 @@
 .btn-cta { padding: 10px 18px; border-radius: 10px; font-weight:600; }
 .btn-outline-cta { padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); color: #e6f0ea; background: transparent; }
 .btn-outline-cta:hover { background: rgba(255,255,255,0.02); }
+
+/* Button polish for contrast and focus */
+.btn-success {
+  background: linear-gradient(180deg,#20c07a,#15a963);
+  border: none;
+  box-shadow: 0 6px 18px rgba(16,140,86,0.18);
+}
+.btn-success:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+.btn-success:active { transform: translateY(0); }
+
+.btn-outline-cta { transition: all .14s ease; }
+
+.is-invalid { border-color: #e25555 !important; box-shadow: 0 0 0 .15rem rgba(226,85,85,0.12); }
+
+.invalid-feedback { color: #ffdddd; }
+
+/* Improve text contrast inside cards */
+.booking-card .card-body h5, .booking-card .card-body .fw-medium { color: #e9f7ef; }
+
+/* subtle uplift for hero and booking cards */
+.hero-card { box-shadow: 0 12px 40px rgba(2,8,6,0.6); }
+.booking-card { border-radius: 12px; }
+
+/* ensure small separators in hero info are visible */
+.hero-card .info-pill { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.02); }
+
 
 .info-pill { background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: 10px; min-width: 140px; }
 
