@@ -4,6 +4,7 @@ import { CartService, CartItemDetail } from '../../../core/services/cart.service
 import { OrderService } from '../../../core/services/order.service';
 import { Order } from '../../../core/models/order.model';
 import { CartItem } from '../../../core/models/cart.model';
+import { BookingService } from '../../../core/services/booking.service';
 
 @Component({
   selector: 'app-checkout',
@@ -36,6 +37,7 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private router: Router
+    , private bookingService: BookingService
   ) {}
 
   ngOnInit() {
@@ -61,55 +63,22 @@ export class CheckoutComponent implements OnInit {
 
   onConfirm() {
     if (this.cartDetails.length === 0) return;
-    
-    this.isProcessing = true;
-    const items: CartItem[] = this.cartDetails.map(d => ({
-      productId: d.productId,
-      quantity: d.quantity,
-      price: d.price
-    }));
-
-    // Decode token logic to extract userId, fallback to 1
-    let uId = 1;
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-        const decoded = JSON.parse(jsonPayload);
-        uId = decoded.id || 1;
-      } catch (e) {}
-    }
-
-    const order: Order = {
-      userId: uId,
-      orderDate: new Date().toISOString(),
-      status: 'Paid',
-      totalAmount: this.total,
-      shippingAddress: `${this.checkoutData.address}, ${this.checkoutData.city}, ${this.checkoutData.zip}`,
-      items: items
+    // Build booking payload and navigate to booking confirmation
+    const bookingPayload = {
+      confirmationNumber: `#BK-${Math.random().toString(36).substring(2,8).toUpperCase()}`,
+      hotelName: this.cartDetails[0]?.product?.name || 'Selected Property',
+      checkIn: new Date().toISOString(),
+      checkOut: (() => { const d = new Date(); d.setDate(d.getDate() + 4); return d.toISOString(); })(),
+      durationNights: 4,
+      guests: '2 Adults',
+      subtotal: this.subtotal,
+      conciergeFee: 0,
+      totalPaid: this.total,
+      paymentMethod: this.checkoutData.paymentMethod === 'creditCard' ? `Card •••• ${this.checkoutData.cardNumber.slice(-4)}` : this.checkoutData.paymentMethod,
+      email: this.checkoutData.email
     };
 
-    this.orderService.createOrder(order).subscribe({
-      next: (createdOrder: any) => {
-        // Clear cart
-        this.cartService.updateCartItems(this.cartId, []).subscribe({
-          next: () => {
-             this.isProcessing = false;
-             alert('Order placed successfully! Order ID: ' + createdOrder.id);
-             this.router.navigate(['/cart']);
-          },
-          error: (err: any) => {
-             console.error('Failed to clear cart', err);
-             this.isProcessing = false;
-          }
-        });
-      },
-      error: (err: any) => {
-        console.error('Failed to create order', err);
-        this.isProcessing = false;
-      }
-    });
+    this.bookingService.setBooking(bookingPayload as any);
+    this.router.navigate(['/booking-confirmation']);
   }
 }

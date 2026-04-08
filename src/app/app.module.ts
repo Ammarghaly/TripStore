@@ -10,11 +10,15 @@ import { App } from './app.component';
 import { CheckoutComponent } from './features/orders/checkout/checkout.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { BookingConfirmationComponent } from './features/bookings/booking-confirmation.component';
+import { BookingsListComponent } from './features/bookings/bookings-list.component';
 
 @NgModule({
   declarations: [
     App,
     CheckoutComponent
+    , BookingConfirmationComponent,
+    BookingsListComponent
   ],
   imports: [
     BrowserModule,
