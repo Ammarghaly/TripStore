@@ -1,0 +1,18 @@
+<div class="custom-modal-overlay" *ngIf="isVisible" (click)="close()">
+  <div class="custom-modal" (click)="$event.stopPropagation()">
+    <h2>{{ alertConfig?.title }}</h2>
+    <p>{{ alertConfig?.message }}</p>
+    
+    <div class="custom-modal-buttons">
+      <button class="confirm-btn" (click)="onConfirm()">
+        {{ alertConfig?.isConfirm ? 'Yes' : 'OK' }}
+      </button>
+      <button 
+        *ngIf="alertConfig?.isConfirm" 
+        class="cancel-btn" 
+        (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

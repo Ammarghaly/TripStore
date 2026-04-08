@@ -1,12 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Bootstrap CSS */
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-/* Bootstrap Icons */
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-/* Global Styles */
 body {
   background-color: #1A1A1A;
   color: white;

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AlertService } from '../../shared/alert/alert.service';
+
 
 @Component({
   selector: 'app-header',
@@ -37,7 +39,7 @@ export class HeaderComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private alertService: AlertService) {}
 
   ngOnInit() {
     console.log('Header component loaded');
@@ -49,9 +51,15 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.isLoggedIn = false;
-    this.showUserMenu = false;
-    console.log('User logged out');
+    this.alertService.confirm(
+      'Confirm Logout',
+      'Are you sure you want to logout?',
+      () => {
+        this.isLoggedIn = false;
+        this.showUserMenu = false;
+        this.alertService.show('Success', 'Logged out successfully');
+      }
+    );
   }
 
   onSearchInput() {
@@ -91,6 +99,13 @@ export class HeaderComponent {
   }
 
   removeFromCart(productId: number) {
+    this.alertService.confirm(
+      'Confirm delete',
+      'Are you sure you want to delete this item?',
+      () => {
     this.cartItems = this.cartItems.filter(item => item.id !== productId);
+    this.alertService.show('Success','item deleted successfuly')
+      });
   }
+
 }
