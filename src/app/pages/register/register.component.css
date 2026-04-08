@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-.logo {
+/* .logo {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -18,7 +18,7 @@ body {
 .logo img {
   width: 116px;
   height: 32px;
-}
+} */
 
 .register-container {
   background-color: #121212;
