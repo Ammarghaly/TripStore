@@ -1,0 +1,278 @@
+.hero-section {
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+}
+
+.hero-container {
+  position: relative;
+  height: 85vh;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.hero-image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  height: 90%;
+  padding: 3rem;
+  max-width: 600px;
+}
+
+.badge-premium {
+  display: inline-block;
+  color: #00ffaa;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  border: 1px solid #00ffaa;
+  padding: 3px 10px;
+  border-radius: 25px;
+  background-color: #32ff8e39;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.hero-description {
+  color: #d1d5db;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-primary-custom {
+  background-color: #10b981;
+  color: black;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
+.btn-primary-custom i {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary-custom:hover i {
+  transform: translateX(4px);
+}
+
+/* Categories Section */
+.categories-section {
+  padding: 2rem 0;
+  background-color: #1a1a1a;
+}
+
+.categories-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.categories-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px;
+  height: 38px;
+  background: #242424;
+  border: 1px solid #2a2a2a;
+  border-radius: 9999px;
+  font-family:
+    'Be Vietnam Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #cbd5e1;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-category:hover {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.btn-category.active {
+  background: #21ba5a;
+  border-color: #21ba5a;
+  color: #ffffff;
+}
+
+.btn-category.active:hover {
+  background: #1da84e;
+  border-color: #1da84e;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 4.5rem;
+  }
+
+  .hero-container {
+    height: 70vh;
+    border-radius: 24px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-content {
+    padding: 1.5rem 2rem;
+  }
+
+  .glass-card {
+    padding: 2rem 1.5rem;
+    height: auto;
+  }
+
+  .categories-buttons {
+    padding: 0 20px;
+    gap: 8px;
+  }
+
+  .btn-category {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-container {
+    height: 500px;
+    border-radius: 20px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-content {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem 1rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .badge-premium {
+    font-size: 0.625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .btn-primary-custom {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .categories-section {
+    padding: 1.5rem 0;
+  }
+
+  .categories-buttons {
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .btn-category {
+    padding: 7px 18px;
+    font-size: 12px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-container {
+    height: 450px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .glass-card {
+    padding: 1.25rem 0.875rem;
+  }
+}

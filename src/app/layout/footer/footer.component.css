@@ -1,0 +1,116 @@
+/* Footer Section */
+.footer-section {
+  padding: 5rem 1rem 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #1A1A1A;
+  color: white;
+}
+
+/* Logo Styles */
+.logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+/* Footer Description */
+.footer-description {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Social Buttons */
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Headings */
+.footer-heading {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+/* Footer Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.copyright {
+  margin: 0;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+}
+
+.footer-btn:hover {
+  color: white;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
