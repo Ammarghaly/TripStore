@@ -1,0 +1,132 @@
+<div class="logo">
+  <img src="Container.png" alt="logo" />
+</div>
+
+<div class="register-container">
+  <div class="register-card">
+    <div class="img-content">
+      <img src="Hero Visual Area.png" alt="img-content" />
+    </div>
+
+    <h2>Create Account</h2>
+    <p>Join the Tripia community for your next adventure.</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Full Name -->
+      <div class="input-group">
+        <label for="fullName">Full Name</label>
+        <div class="input-wrapper">
+          <i class="icon-user"></i>
+          <input
+            id="fullName"
+            type="text"
+            placeholder="Enter your full name"
+            formControlName="fullName"
+          />
+        </div>
+        <div
+          class="error"
+          *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
+        >
+          Full Name is required.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <i class="icon-mail"></i>
+          <input id="email" type="email" placeholder="Enter your email" formControlName="email" />
+        </div>
+        <div
+          class="error"
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        >
+          <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['email']">Email must be valid.</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <i class="icon-lock"></i>
+          <input
+            id="password"
+            type="password"
+            placeholder="Create a password"
+            formControlName="password"
+          />
+          <button type="button" class="toggle-password" (click)="togglePassword('password')">
+            <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+        <div
+          class="error"
+          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+        >
+          <span *ngIf="registerForm.get('password')?.errors?.['required']"
+            >Password is required.</span
+          >
+          <span *ngIf="registerForm.get('password')?.errors?.['minlength']"
+            >Password must be at least 6 characters.</span
+          >
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-wrapper">
+          <i class="icon-lock"></i>
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm password"
+            formControlName="confirmPassword"
+          />
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            registerForm.get('confirmPassword')?.touched &&
+            registerForm.get('confirmPassword')?.invalid
+          "
+        >
+          Confirm Password is required.
+        </div>
+        <div class="error" *ngIf="passwordMismatch">Passwords do not match.</div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="registerForm.invalid || passwordMismatch"
+      >
+        Sign Up
+      </button>
+    </form>
+
+    <p class="have-account">
+      Already have an account? <span class="login-link"> <a routerLink="/login">login</a> </span>
+    </p>
+
+    <div class="separator">
+      <span>OR CONTINUE WITH</span>
+    </div>
+
+    <div class="social-buttons">
+      <button class="google">
+        <i class="fa-brands fa-google"></i>
+        Google
+      </button>
+
+      <button class="apple">
+        <i class="fa-brands fa-apple"></i>
+        Apple
+      </button>
+    </div>
+  </div>
+</div>
