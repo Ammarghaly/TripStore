@@ -9,7 +9,17 @@ import { ProductsPageComponent } from './features/products/products-page/product
 import { CategoriesPageComponent } from './features/categories/categories-page/categories-page.component';
 import { CategorySectionComponent } from './shared/components/category-section/category-section.component';
 
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   { path: '', component: HomeComponent },
   // { path: 'test', component: ServiceTestDashboardComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -20,8 +30,11 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesPageComponent },
   { path: 'products', component: ProductsPageComponent },
   { path: 'products/:categoryId', component: ProductsPageComponent },
-  // { path: 'product-details/:id', component: ProductDetailsPageComponent }
+  //{ path: 'product-details/:id', component: ProductDetailsPageComponent }
 ];
+
+
+
 
 
 
@@ -29,5 +42,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+
 })
 export class AppRoutingModule {}

@@ -1,0 +1,171 @@
+body {
+  background-color: #0d0f0f;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px;
+}
+.logo img {
+  width: 116px;
+  height: 32px;
+} */
+
+.register-container {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 30px;
+  background: #121212;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.register-card h2 {
+  margin-bottom: 5px;
+}
+
+.register-card p {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+}
+
+input {
+  width: 100%;
+  padding: 12px 12px 12px 35px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background-color: #1c1f1f;
+  color: white;
+}
+input:focus {
+  outline: none;
+  border: 1px solid #22c55e;
+  background-color: #1c1f1f;
+  box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 14px;
+}
+.toggle-password i {
+  color: white;
+}
+
+button[type='submit'] {
+  background: #22c55e;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button[type='submit']:disabled {
+  background: #22c55e;
+  cursor: not-allowed;
+}
+.separator {
+  text-align: center;
+  margin: 30px 0;
+  border-bottom: 1px solid #333;
+  line-height: 0.1em;
+}
+
+.separator span {
+  padding: 0 10px;
+  color: #888;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.error {
+  color: #f87171;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.have-account {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: #22c55e;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.social-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 40px;
+  border: 1px solid #9ca3af;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
