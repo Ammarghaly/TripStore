@@ -41,7 +41,7 @@ export class ProductsService {
 
   selectedCategory = signal<number | null>(null);
 
-  setCategory(id: number) {
+  setCategory(id: number | null) {
     this.selectedCategory.set(id);
   }
 
