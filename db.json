@@ -49,48 +49,246 @@
   "products": [
     {
       "id": 1,
-      "name": "Professional Fishing Rod",
+      "name": "Picnic Basket",
       "description": "Flexible carbon fiber rod, handles heavy weights.",
       "price": 120.5,
       "stock": 15,
-      "tripIds": [1],
+      "tripIds": [
+        1
+      ],
       "imageUrl": "products/basketwande.png"
     },
     {
       "id": 2,
-      "name": "Tackle Box",
+      "name": "Boiller",
       "description": "Compartmentalized box for baits and hooks.",
-      "price": 45.0,
+      "price": 45,
       "stock": 30,
-      "tripIds": [1],
+      "tripIds": [
+        1
+      ],
       "imageUrl": "products/boiller.png"
     },
     {
       "id": 3,
-      "name": "Sun Protection Hat",
+      "name": "Sun Protection Set",
       "description": "Wide-brimmed hat to protect face and head from the sun.",
-      "price": 15.0,
+      "price": 15,
       "stock": 50,
-      "tripIds": [1, 2],
+      "tripIds": [
+        1,
+        2
+      ],
       "imageUrl": "products/coastSea.jpg"
     },
     {
       "id": 4,
       "name": "4-Person Camping Tent",
       "description": "Pop-up tent, wind resistant.",
-      "price": 250.0,
+      "price": 250,
       "stock": 10,
-      "tripIds": [2],
+      "tripIds": [
+        2
+      ],
       "imageUrl": "products/tent.png"
     },
     {
       "id": 5,
-      "name": "4-Person Camping Tent",
+      "name": "Grill-small size",
       "description": "Pop-up tent, wind resistant.",
-      "price": 250.0,
+      "price": 250,
       "stock": 10,
-      "tripIds": [2],
+      "tripIds": [
+        2
+      ],
       "imageUrl": "products/griller.png"
+    },
+    {
+      "id": 6,
+      "name": "Backpack Hiking",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Backpack Hiking.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Barbecue Hand Fan.jpg",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Barbecue Hand Fan.jpg"
+    },
+    {
+      "id": 8,
+      "name": "BBQ Natural Charcoal",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/BBQ Natural Charcoal.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Beach Lounger",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Beach Lounger.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Camping Sleeping Bag",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Camping Sleeping Bag.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Fishing Accessories Kit.jpg",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Fishing Accessories Kit.jpg"
+    },
+    {
+      "id": 12,
+      "name": "FISHMAN 300 Boat Set",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/FISHMAN 300 Boat Set.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Flashlight Rechargeable Torch",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Flashlight Rechargeable Torch.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Folding Beach Chair",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Folding Beach Chair.jpg"
+    },
+    {
+      "id": 15,
+      "name": "PicnicBlanket",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/PicnicBlanket.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Rain Ponchos",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Rain Ponchos.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Stainless Steel Snaps",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Stainless Steel Snaps.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Stick Fishing Rod",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/gStick Fishing Rod .jpg"
+    },
+    {
+      "id": 19,
+      "name": "Thermal Warm Winter Gloves",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/Thermal Warm Winter Gloves.jpg"
+    },
+    {
+      "id": 20,
+      "name": "TREKKING SHOES Sneaker",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/TREKKING SHOES Sneaker.jpg"
+    },
+    {
+      "id": 21,
+      "name": "trick meat",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/trick meat.jpg"
+    },
+    {
+      "id": 22,
+      "name": "wodenBeach Chairs",
+      "description": "Pop-up tent, wind resistant.",
+      "price": 250,
+      "stock": 10,
+      "tripIds": [
+        2
+      ],
+      "imageUrl": "products/wodenBeach Chairs.jpg"
     }
   ],
   "carts": [
@@ -100,13 +298,23 @@
       "items": [
         {
           "productId": 1,
-          "quantity": 1,
+          "quantity": 2,
           "price": 120.5
         },
         {
           "productId": 3,
-          "quantity": 2,
-          "price": 15.0
+          "quantity": 7,
+          "price": 15
+        },
+        {
+          "productId": 4,
+          "quantity": 1,
+          "price": 250
+        },
+        {
+          "productId": 2,
+          "quantity": 3,
+          "price": 45
         }
       ]
     }
@@ -128,7 +336,7 @@
         {
           "productId": 3,
           "quantity": 2,
-          "priceAtPurchase": 15.0
+          "priceAtPurchase": 15
         }
       ]
     }

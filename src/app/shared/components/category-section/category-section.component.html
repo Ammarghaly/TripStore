@@ -1,10 +1,8 @@
 <div class="container my-4">
   <h4 class="fw-bold mb-3 text-white">Explore Categories</h4>
   <div class="d-flex flex-nowrap gap-3">
-    @for (category of categoryService.category(); track category.id) {
-      <app-category-card
-        [category]="category"
-      />
+    @for (category of categoryService.categories(); track category.id) {
+      <app-category-card [category]="category" (categoryClick)="onCategoryClick($event)" />
     }
   </div>
 </div>

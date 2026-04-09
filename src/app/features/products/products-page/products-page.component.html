@@ -1,0 +1,38 @@
+<div class="container py-4 px-2">
+  <h2 class="text-white mb-1">All Adventure Products</h2>
+  <p class="text-secondary mb-5">
+    Rugged, premium, and tactical outdoor gear curated for your next expedition into the wild.
+  </p>
+
+  <div class="row gx-3 gy-4">
+    <div class="col-md-3" *ngFor="let product of productService.pagedProducts">
+      <app-product-card [products]="product" (addToCart)="handleAddToCart($event)">
+      </app-product-card>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <button
+      class="btn btn-outline-light me-2"
+      (click)="productService.goToPage(productService.currentPage() - 1)"
+    >
+      Previous
+    </button>
+
+    <button
+      *ngFor="let page of [].constructor(productService.totalPages()); let i = index"
+      class="btn me-1"
+      [ngClass]="i + 1 === productService.currentPage() ? 'btn-light' : 'btn-outline-light'"
+      (click)="productService.goToPage(i + 1)"
+    >
+      {{ i + 1 }}
+    </button>
+
+    <button
+      class="btn btn-outline-light ms-2"
+      (click)="productService.goToPage(productService.currentPage() + 1)"
+    >
+      Next
+    </button>
+  </div>
+</div>

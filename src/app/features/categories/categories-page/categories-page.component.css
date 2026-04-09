@@ -1,0 +1,8 @@
+.category-card {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
+}

@@ -11,6 +11,8 @@ import { CategorySectionComponent } from './shared/components/category-section/c
 import { CategoryCardComponent } from './shared/components/category-card/category-card.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { ProductsSectionComponent } from './shared/components/products-section/products-section.component';
+import { ProductsPageComponent } from './features/products/products-page/products-page.component';
+import { CategoriesPageComponent } from './features/categories/categories-page/categories-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ProductsSectionComponent } from './shared/components/products-section/p
     CategoryCardComponent,
     ProductCardComponent,
     ProductsSectionComponent,
+    ProductsPageComponent,
+    CategoriesPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [

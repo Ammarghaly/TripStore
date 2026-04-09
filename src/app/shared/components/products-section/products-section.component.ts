@@ -13,4 +13,7 @@ export class ProductsSectionComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts();
   }
+  handleAddToCart(product: any) {
+    this.productService.addToCart(product)
+  }
 }

@@ -9,8 +9,7 @@ import { Category } from '../../../core/models/category';
   styleUrl: './category-card.component.css',
 })
 export class CategoryCardComponent {
-  // @Input() name: string = '';
-  // @Input() imageUrl: string = '';
+ 
   @Input() category!: Category;
 
   @Output() categoryClick = new EventEmitter<number>()

@@ -7,12 +7,12 @@ import { Category } from '../../../core/models/category';
 })
 export class CategorySrvice {
   private http = inject(HttpClient);
-   category = signal<Category[]>([])
+   categories = signal<Category[]>([])
 
   getCategories(){
     this.http.get<Category[]>('http://localhost:3000/trips').subscribe({
       next: (data) => {
-        this.category.set(data)
+        this.categories.set(data)
       }
     })
   }
