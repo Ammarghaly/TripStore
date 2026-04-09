@@ -133,8 +133,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/cart']);
   }
 
-}
-
   ngOnDestroy() {
     this.cartSubscription?.unsubscribe();
   }
+}
