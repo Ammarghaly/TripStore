@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AlertService } from '../../shared/alert/alert.service';
-
+import { AuthService } from '../../core/services/auth.service';
+import { CartService, CartItemDetail } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +12,9 @@ import { AlertService } from '../../shared/alert/alert.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
-  isLoggedIn: boolean = true;
-  
-  currentUser = {
-    name: 'John Doe',
-    email: 'user@example.com'
-  };
-  
+export class HeaderComponent implements OnInit, OnDestroy {
+  isLoggedIn: boolean = false;
+  currentUser: any = null;
   showUserMenu: boolean = false;
   
   searchQuery: string = '';
@@ -24,26 +22,30 @@ export class HeaderComponent {
   showSearchDropdown: boolean = false;
 
   showCartDropdown: boolean = false;
-  cartItems = [
-    {
-      id: 1,
-      name: 'Professional Fishing Rod',
-      price: 120.5,
-      quantity: 1
-    },
-    {
-      id: 3,
-      name: 'Sun Protection Hat',
-      price: 15.0,
-      quantity: 2
-    }
-  ];
+  cartItems: CartItemDetail[] = [];
+  cartId: number = 0;
 
-  constructor(private http: HttpClient,private alertService: AlertService) {}
+  private cartSubscription?: Subscription;
+
+  constructor(
+    private http: HttpClient,
+    private alertService: AlertService,
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    console.log('Header component loaded');
-    console.log('isLoggedIn:', this.isLoggedIn);
+    this.isLoggedIn = this.authService.isAuthenticated();
+    
+    this.cartSubscription = this.cartService.cart$.subscribe({
+      next: (response) => {
+        this.cartId = response.cart.id;
+        this.cartItems = response.details;
+      }
+    });
+
+    this.cartService.refreshCart();
   }
 
   toggleUserMenu() {
@@ -55,9 +57,12 @@ export class HeaderComponent {
       'Confirm Logout',
       'Are you sure you want to logout?',
       () => {
+        this.authService.logout();
         this.isLoggedIn = false;
+        this.currentUser = null;
         this.showUserMenu = false;
         this.alertService.show('Success', 'Logged out successfully');
+        this.router.navigate(['/']);
       }
     );
   }
@@ -95,17 +100,41 @@ export class HeaderComponent {
   }
 
   getCartTotal() {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return this.cartItems.reduce((total, item) => {
+      const price = item.product?.price || item.price;
+      return total + (price * item.quantity);
+    }, 0);
+  }
+
+  getCartCount() {
+    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
   }
 
   removeFromCart(productId: number) {
     this.alertService.confirm(
-      'Confirm delete',
-      'Are you sure you want to delete this item?',
+      'Remove Item',
+      'Remove this item from cart?',
       () => {
-    this.cartItems = this.cartItems.filter(item => item.id !== productId);
-    this.alertService.show('Success','item deleted successfuly')
-      });
+        this.cartService.removeItemFromCart(this.cartId, productId).subscribe({
+          next: () => {
+            this.alertService.show('Removed', 'Item removed from cart');
+          },
+          error: (error) => {
+            console.error('Error removing item:', error);
+            this.alertService.show('Error', 'Failed to remove item');
+          }
+        });
+      }
+    );
+  }
+
+  viewCart() {
+    this.showCartDropdown = false;
+    this.router.navigate(['/cart']);
   }
 
 }
+
+  ngOnDestroy() {
+    this.cartSubscription?.unsubscribe();
+  }

@@ -1,15 +1,5 @@
-<<<<<<< HEAD
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
-
-body {
-  background-color: #1A1A1A;
-  color: white;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-=======
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 * {
@@ -17,6 +7,9 @@ body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
->>>>>>> feature/checkout_card
+  background-color: #1A1A1A;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }

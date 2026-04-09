@@ -1,31 +1,8 @@
-<<<<<<< HEAD
 import {
   NgModule,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
-import { App } from './app.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { AlertComponent } from './shared/alert/alert.component';
-
-@NgModule({
-  declarations: [App, HeaderComponent, FooterComponent, AlertComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-  ],
-  bootstrap: [App],
-})
-export class AppModule {}
-=======
-import { NgModule, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -34,18 +11,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { AlertComponent } from './shared/alert/alert.component';
 import { CheckoutComponent } from './features/orders/checkout/checkout.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { BookingConfirmationComponent } from './features/bookings/booking-confirmation.component';
 import { BookingsListComponent } from './features/bookings/bookings-list.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     App,
-    CheckoutComponent
-    , BookingConfirmationComponent,
-    BookingsListComponent
+    HeaderComponent,
+    FooterComponent,
+    AlertComponent,
+    CheckoutComponent,
+    BookingConfirmationComponent,
+    BookingsListComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +39,7 @@ import { BookingsListComponent } from './features/bookings/bookings-list.compone
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
@@ -62,7 +47,6 @@ import { BookingsListComponent } from './features/bookings/bookings-list.compone
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
   ],
-  bootstrap: [App]
+  bootstrap: [App],
 })
-export class AppModule { }
->>>>>>> feature/checkout_card
+export class AppModule {}

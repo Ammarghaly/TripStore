@@ -54,7 +54,7 @@
         <div class="cart-dropdown-container me-3">
           <button class="btn icon-btn position-relative" (click)="toggleCartDropdown()">
             <i class="bi bi-bag"></i>
-            <span class="cart-badge">{{ cartItems.length }}</span>
+            <span class="cart-badge">{{ getCartCount() }}</span>
           </button>
 
           <div class="cart-dropdown-menu" *ngIf="showCartDropdown">
@@ -71,10 +71,10 @@
             <div *ngIf="cartItems.length > 0" class="cart-items-list">
               <div class="cart-item" *ngFor="let item of cartItems">
                 <div class="item-info">
-                  <p class="item-name">{{ item.name }}</p>
-                  <p class="item-details">{{ item.quantity }} x ${{ item.price }}</p>
+                  <p class="item-name">{{ item.product?.name }}</p>
+                  <p class="item-details">{{ item.quantity }} x ${{ item.product?.price || item.price }}</p>
                 </div>
-                <button class="btn-remove" (click)="removeFromCart(item.id)">
+                <button class="btn-remove" (click)="removeFromCart(item.productId)">
                   <i class="bi bi-x"></i>
                 </button>
               </div>
@@ -85,7 +85,7 @@
                 <span>Total:</span>
                 <span class="total-price">${{ getCartTotal().toFixed(2) }}</span>
               </div>
-              <button class="btn btn-view-cart">View Cart</button>
+              <button class="btn btn-view-cart" (click)="viewCart()">View Cart</button>
             </div>
           </div>
         </div>
