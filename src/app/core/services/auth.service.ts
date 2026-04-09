@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -39,10 +40,31 @@ export class AuthService {
       map(response => {
         this.storeToken(response.accessToken);
         return response;
+=======
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private URL = 'http://localhost:3000';
+  private http = inject(HttpClient);
+  private tokenKey = 'admin_token';
+
+  login(credentials: { email: string, password: string }): Observable<any> {
+    return this.http.post(`${this.URL}/login`, credentials).pipe(
+      tap((response: any) => {
+        if (response && response.accessToken) {
+          localStorage.setItem(this.tokenKey, response.accessToken);
+        }
+>>>>>>> origin/dashboard
       })
     );
   }
 
+<<<<<<< HEAD
   /**
    * Login user with email and password
    * @param credentials { email, password }
@@ -133,5 +155,13 @@ export class AuthService {
       console.error('Error decoding token:', error);
       return null;
     }
+=======
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  logout() {
+    localStorage.removeItem(this.tokenKey);
+>>>>>>> origin/dashboard
   }
 }

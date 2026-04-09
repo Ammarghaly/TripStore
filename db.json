@@ -2,10 +2,31 @@
   "users": [
     {
       "id": 1,
-      "email": "user@example.com",
-      "password": "123456",
+      "email": "user1@example.com",
+      "password": "password123",
       "name": "John Doe",
-      "shippingAddress": "New York, USA"
+      "shippingAddress": "123 Main St, New York, USA"
+    },
+    {
+      "id": 2,
+      "email": "user2@example.com",
+      "password": "securePass",
+      "name": "Jane Smith",
+      "shippingAddress": "456 Elm St, Los Angeles, USA"
+    },
+    {
+      "id": 3,
+      "email": "user3@example.com",
+      "password": "complexPwd",
+      "name": "David Lee",
+      "shippingAddress": "789 Oak St, Chicago, USA"
+    },
+    {
+      "id": 4,
+      "email": "admin@example.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "shippingAddress": "Admin HQ"
     }
   ],
   "trips": [
@@ -19,6 +40,7 @@
       "id": 2,
       "name": "Beach",
       "description": "Camping and safari gear for desert adventures.",
+<<<<<<< HEAD
       "imageUrl": "categories/beach.png"
     },
     {
@@ -44,6 +66,15 @@
       "name": "Hiking",
       "description": "Camping and safari gear for desert adventures.",
       "imageUrl": "categories/hiking.png"
+=======
+      "imageUrl": "safari-trip.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mountain Climbing",
+      "description": "Equipment for mountain adventures and climbing.",
+      "imageUrl": "mountain-climbing.jpg"
+>>>>>>> origin/dashboard
     }
   ],
   "products": [
@@ -56,7 +87,11 @@
       "tripIds": [
         1
       ],
+<<<<<<< HEAD
       "imageUrl": "products/basketwande.png"
+=======
+      "imageUrl": "rod.jpg"
+>>>>>>> origin/dashboard
     },
     {
       "id": 2,
@@ -65,9 +100,15 @@
       "price": 45,
       "stock": 30,
       "tripIds": [
+<<<<<<< HEAD
         4
       ],
       "imageUrl": "products/boiller.png"
+=======
+        1
+      ],
+      "imageUrl": "box.jpg"
+>>>>>>> origin/dashboard
     },
     {
       "id": 3,
@@ -79,7 +120,11 @@
         1,
         2
       ],
+<<<<<<< HEAD
       "imageUrl": "products/coastSea.jpg"
+=======
+      "imageUrl": "hat.jpg"
+>>>>>>> origin/dashboard
     },
     {
       "id": 4,
@@ -88,6 +133,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
+<<<<<<< HEAD
         4
       ],
       "imageUrl": "products/tent.png"
@@ -293,6 +339,22 @@
         2
       ],
       "imageUrl": "products/wodenBeach Chairs.jpg"
+=======
+        2
+      ],
+      "imageUrl": "tent.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Climbing Shoes",
+      "description": "High-grip climbing shoes for safety.",
+      "price": 99.99,
+      "stock": 20,
+      "tripIds": [
+        3
+      ],
+      "imageUrl": "climbing-shoes.jpg"
+>>>>>>> origin/dashboard
     }
   ],
   "carts": [
@@ -323,10 +385,23 @@
         {
           "productId": 14,
           "quantity": 2,
+<<<<<<< HEAD
           "price": 250
         },
         {
           "productId": 15,
+=======
+          "price": 15
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "items": [
+        {
+          "productId": 4,
+>>>>>>> origin/dashboard
           "quantity": 1,
           "price": 250
         }
@@ -340,7 +415,7 @@
       "orderDate": "2023-10-25T10:30:00Z",
       "status": "Paid",
       "totalAmount": 150.5,
-      "shippingAddress": "New York, USA",
+      "shippingAddress": "123 Main St, New York, USA",
       "items": [
         {
           "productId": 1,
@@ -351,6 +426,39 @@
           "productId": 3,
           "quantity": 2,
           "priceAtPurchase": 15
+<<<<<<< HEAD
+=======
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "orderDate": "2023-11-01T15:45:00Z",
+      "status": "Shipped",
+      "totalAmount": 250,
+      "shippingAddress": "456 Elm St, Los Angeles, USA",
+      "items": [
+        {
+          "productId": 4,
+          "quantity": 1,
+          "priceAtPurchase": 250
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "orderDate": "2023-11-05T08:00:00Z",
+      "status": "Pending",
+      "totalAmount": 99.99,
+      "shippingAddress": "123 Main St, New York, USA",
+      "items": [
+        {
+          "productId": 5,
+          "quantity": 1,
+          "priceAtPurchase": 99.99
+>>>>>>> origin/dashboard
         }
       ]
     }
