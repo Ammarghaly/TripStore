@@ -1,0 +1,18 @@
+.admin-container {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+
+.main-wrapper {
+  margin-left: 220px;
+  flex: 1;
+  background-color: #1A1A1A;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    margin-left: 0;
+  }
+}

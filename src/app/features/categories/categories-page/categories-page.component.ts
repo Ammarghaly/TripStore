@@ -7,7 +7,8 @@ import { CategorySrvice } from '../../products/services/category.service';
   templateUrl: './categories-page.component.html',
   styleUrl: './categories-page.component.css',
   host:{
-    class: 'd-block min-vh-100 bg-black'
+    class: 'd-block min-vh-100',
+    '[style.background-color]': '"#181A19"',
   }
 })
 export class CategoriesPageComponent implements OnInit {

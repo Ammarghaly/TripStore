@@ -1,46 +1,33 @@
-<!-- <div class="logo">
-  <img src="Container.png" alt="logo" />
-</div> -->
-
-<div class="register-container">
-  <div class="register-card">
-    <div class="img-content">
-      <img src="Hero Visual Area.png" alt="img-content" />
+<main class="main-container">
+  <section class="form">
+    <div class="form-content">
+      <h2>Create Account</h2>
+      <p>Join the Tripia community for your next adventure.</p>
     </div>
 
-    <h2>Create Account</h2>
-    <p>Join the Tripia community for your next adventure.</p>
-
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
-      <!-- Full Name -->
-      <div class="input-group">
-        <label for="fullName">Full Name</label>
-        <div class="input-wrapper">
-          <i class="icon-user"></i>
-          <input
-            id="fullName"
-            type="text"
-            placeholder="Enter your full name"
-            formControlName="fullName"
-          />
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="inputs-group">
+        <label>Full Name</label>
+        <div class="input">
+          <i class="fa-regular fa-user"></i>
+          <input type="text" formControlName="fullName" placeholder="Enter your full name" />
         </div>
         <div
-          class="error"
+          class="error-msg"
           *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
         >
           Full Name is required.
         </div>
       </div>
 
-      <!-- Email -->
-      <div class="input-group">
-        <label for="email">Email</label>
-        <div class="input-wrapper">
-          <i class="icon-mail"></i>
-          <input id="email" type="email" placeholder="Enter your email" formControlName="email" />
+      <div class="inputs-group">
+        <label>Email Address</label>
+        <div class="input">
+          <i class="fa-regular fa-envelope"></i>
+          <input type="email" formControlName="email" placeholder="explorer@tripia.com" />
         </div>
         <div
-          class="error"
+          class="error-msg"
           *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
         >
           <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
@@ -48,23 +35,15 @@
         </div>
       </div>
 
-      <!-- Password -->
-      <div class="input-group">
-        <label for="password">Password</label>
-        <div class="input-wrapper">
-          <i class="icon-lock"></i>
-          <input
-            id="password"
-            type="password"
-            placeholder="Create a password"
-            formControlName="password"
-          />
-          <button type="button" class="toggle-password" (click)="togglePassword('password')">
-            <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-          </button>
+      <div class="inputs-group">
+        <label>Password</label>
+        <div class="input">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+          <i class="fa-regular fa-eye toggle-pass" (click)="togglePassword('password')"></i>
         </div>
         <div
-          class="error"
+          class="error-msg"
           *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
         >
           <span *ngIf="registerForm.get('password')?.errors?.['required']"
@@ -76,20 +55,14 @@
         </div>
       </div>
 
-      <!-- Confirm Password -->
-      <div class="input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <div class="input-wrapper">
-          <i class="icon-lock"></i>
-          <input
-            id="confirmPassword"
-            type="password"
-            placeholder="Confirm password"
-            formControlName="confirmPassword"
-          />
+      <div class="inputs-group">
+        <label>Confirm Password</label>
+        <div class="input">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
         </div>
         <div
-          class="error"
+          class="error-msg"
           *ngIf="
             registerForm.get('confirmPassword')?.touched &&
             registerForm.get('confirmPassword')?.invalid
@@ -97,26 +70,18 @@
         >
           Confirm Password is required.
         </div>
-        <div class="error" *ngIf="passwordMismatch">Passwords do not match.</div>
+        <div class="error-msg" *ngIf="passwordMismatch">Passwords do not match.</div>
       </div>
 
-      <button
-        type="submit"
-        class="btn-primary"
-        [disabled]="registerForm.invalid || passwordMismatch"
-      >
+      <button type="submit" class="btn-submit" [disabled]="registerForm.invalid || passwordMismatch">
         Sign Up
       </button>
     </form>
 
-    <p class="have-account">
-      Already have an account? <span class="login-link"> <a routerLink="/login">login</a> </span>
-    </p>
-
     <div class="separator">
-      <span>OR CONTINUE WITH</span>
+      <span>Or Connect Via</span>
     </div>
-
+    
     <div class="social-buttons">
       <button class="google">
         <i class="fa-brands fa-google"></i>
@@ -128,5 +93,10 @@
         Apple
       </button>
     </div>
-  </div>
-</div>
+    
+    <p class="footer-note">Already have an account? <a routerLink="/login">Login</a></p>
+  </section>
+
+  <section class="login-img"></section>
+  <img src="Branding.png" alt="register-img" />
+</main>

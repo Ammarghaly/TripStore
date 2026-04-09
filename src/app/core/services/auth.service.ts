@@ -101,4 +101,37 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
+
+  /**
+   * Check if current user is admin
+   * Checks the role field in JWT token
+   */
+  isAdmin(): boolean {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return false;
+
+    try {
+      const decoded: any = jwt_decode.jwtDecode(token);
+      return decoded?.role === 'admin' || decoded?.isAdmin === true;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Get user role from token
+   */
+  getUserRole(): string | null {
+    const token = localStorage.getItem('accessToken');
+    if (!token) return null;
+
+    try {
+      const decoded: any = jwt_decode.jwtDecode(token);
+      return decoded?.role || null;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return null;
+    }
+  }
 }

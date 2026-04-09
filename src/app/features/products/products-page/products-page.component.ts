@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, computed } from '@angular/core';
+import { Component, inject, OnInit, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
@@ -10,7 +10,8 @@ import { Product } from '../../../core/models/product';
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css',
   host: {
-    class: 'd-block min-vh-100 bg-black',
+    class: 'd-block min-vh-100',
+    '[style.background-color]': '"#181A19"',
   },
 })
 export class ProductsPageComponent implements OnInit {
@@ -20,29 +21,41 @@ export class ProductsPageComponent implements OnInit {
   route = inject(ActivatedRoute);
 
   categoryId!: number;
+  
+  minPrice = signal(0);
+  maxPrice = signal(500);
 
   totalPages = computed(() => {
-  return Math.ceil(this.filteredProducts().length / this.productService.pageSize);
-});
+    return Math.ceil(this.filteredProducts().length / this.productService.pageSize);
+  });
 
   filteredProducts = computed(() => {
     const products = this.productService.products();
     const id = this.productService.selectedCategory();
+    const min = this.minPrice();
+    const max = this.maxPrice();
 
-    if (!id) return products;
+    let filtered = products;
 
-    return products.filter((p) => p.tripIds.includes(id));
+    if (id) {
+      filtered = filtered.filter((p) => p.tripIds.includes(id));
+    }
+
+    filtered = filtered.filter((p) => p.price >= min && p.price <= max);
+
+    return filtered;
   });
+  
   pagedFilteredProducts = computed(() => {
-  const products = this.filteredProducts();
-  const page = this.productService.currentPage();
-  const size = this.productService.pageSize;
+    const products = this.filteredProducts();
+    const page = this.productService.currentPage();
+    const size = this.productService.pageSize;
 
-  const start = (page - 1) * size;
-  const end = start + size;
+    const start = (page - 1) * size;
+    const end = start + size;
 
-  return products.slice(start, end);
-});
+    return products.slice(start, end);
+  });
 
   ngOnInit(): void {
     this.categoryId = Number(this.route.snapshot.paramMap.get('categoryId'));
@@ -53,7 +66,15 @@ export class ProductsPageComponent implements OnInit {
   }
 
   handleAddToCart(product: Product) {
-  this.productService.addToCart(product);
-}
+    this.productService.addToCart(product);
+  }
 
+  selectCategory(categoryId: number | null) {
+    this.productService.setCategory(categoryId);
+    this.productService.currentPage.set(1);
+  }
+
+  onPriceChange() {
+    this.productService.currentPage.set(1);
+  }
 }
