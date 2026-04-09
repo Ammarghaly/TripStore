@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { AlertService } from '../../shared/alert/alert.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CartService, CartItemDetail } from '../../core/services/cart.service';
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cartId: number = 0;
 
   private cartSubscription?: Subscription;
+  private routerSubscription?: Subscription;
 
   constructor(
     private http: HttpClient,
@@ -36,7 +38,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isAuthenticated();
+    this.updateAuthState();
+
+    this.routerSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.updateAuthState();
+    });
     
     this.cartSubscription = this.cartService.cart$.subscribe({
       next: (response) => {
@@ -44,8 +52,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.cartItems = response.details;
       }
     });
+  }
 
-    this.cartService.refreshCart();
+  updateAuthState() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+    if (this.isLoggedIn) {
+      this.loadUserData();
+      this.cartService.refreshCart();
+    }
+  }
+
+  loadUserData() {
+    const userId = this.authService.getUserId();
+    if (userId) {
+      this.http.get(`http://localhost:3000/users/${userId}`).subscribe({
+        next: (user: any) => {
+          this.currentUser = user;
+        },
+        error: (error) => {
+          console.error('Error loading user data:', error);
+        }
+      });
+    }
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 
   toggleUserMenu() {
@@ -133,7 +165,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/cart']);
   }
 
+  viewDashboard() {
+    this.showCartDropdown = false;
+    this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToDashboard() {
+    this.showUserMenu = false;
+    this.router.navigate(['/admin/dashboard']);
+  }
+
   ngOnDestroy() {
     this.cartSubscription?.unsubscribe();
+    this.routerSubscription?.unsubscribe();
   }
 }
