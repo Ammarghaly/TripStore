@@ -1,0 +1,50 @@
+<div class="test-card">
+  <h3>🔐 Authentication Service Test</h3>
+
+  <form [formGroup]="form" class="form-group">
+    <div class="form-row">
+      <input type="email" placeholder="Email" formControlName="email" class="input-field" />
+    </div>
+
+    <div class="form-row">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="input-field"
+      />
+    </div>
+
+    <div class="form-row">
+      <input
+        type="text"
+        placeholder="Name (for registration)"
+        formControlName="name"
+        class="input-field"
+      />
+    </div>
+
+    <div class="button-group">
+      <button (click)="onLogin()" [disabled]="form.invalid || loading" class="btn btn-primary">
+        {{ loading ? 'Loading...' : 'Login' }}
+      </button>
+
+      <button (click)="onRegister()" [disabled]="form.invalid || loading" class="btn btn-secondary">
+        {{ loading ? 'Loading...' : 'Register' }}
+      </button>
+
+      <button (click)="onLogout()" [disabled]="!isAuthenticated()" class="btn btn-danger">
+        Logout
+      </button>
+    </div>
+  </form>
+
+  <div class="status-section">
+    <p><strong>Authenticated:</strong> {{ isAuthenticated() ? '✓ Yes' : '✗ No' }}</p>
+    <p *ngIf="userId"><strong>User ID:</strong> {{ userId }}</p>
+  </div>
+
+  <div *ngIf="message" [attr.data-type]="messageType" class="message" [ngClass]="messageType">
+    {{ message }}
+  </div>
+</div>
