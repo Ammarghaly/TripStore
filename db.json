@@ -65,7 +65,7 @@
       "price": 45,
       "stock": 30,
       "tripIds": [
-        1
+        4
       ],
       "imageUrl": "products/boiller.png"
     },
@@ -88,7 +88,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        4
       ],
       "imageUrl": "products/tent.png"
     },
@@ -99,7 +99,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        3
       ],
       "imageUrl": "products/griller.png"
     },
@@ -110,7 +110,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        6
       ],
       "imageUrl": "products/Backpack Hiking.jpg"
     },
@@ -121,7 +121,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        3
       ],
       "imageUrl": "products/Barbecue Hand Fan.jpg"
     },
@@ -132,7 +132,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        3
       ],
       "imageUrl": "products/BBQ Natural Charcoal.jpg"
     },
@@ -154,7 +154,8 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        4,
+        6
       ],
       "imageUrl": "products/Camping Sleeping Bag.jpg"
     },
@@ -165,7 +166,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        5
       ],
       "imageUrl": "products/Fishing Accessories Kit.jpg"
     },
@@ -176,7 +177,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        5
       ],
       "imageUrl": "products/FISHMAN 300 Boat Set.jpg"
     },
@@ -187,7 +188,8 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        4,
+        6
       ],
       "imageUrl": "products/Flashlight Rechargeable Torch.jpg"
     },
@@ -198,6 +200,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
+        1,
         2
       ],
       "imageUrl": "products/Folding Beach Chair.jpg"
@@ -209,7 +212,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        1
       ],
       "imageUrl": "products/PicnicBlanket.jpg"
     },
@@ -220,7 +223,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        6
       ],
       "imageUrl": "products/Rain Ponchos.jpg"
     },
@@ -231,7 +234,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        5
       ],
       "imageUrl": "products/Stainless Steel Snaps.jpg"
     },
@@ -242,9 +245,9 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        5
       ],
-      "imageUrl": "products/gStick Fishing Rod .jpg"
+      "imageUrl": "products/StickFishing Rod.jpg"
     },
     {
       "id": 19,
@@ -253,7 +256,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        6
       ],
       "imageUrl": "products/Thermal Warm Winter Gloves.jpg"
     },
@@ -264,7 +267,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        6
       ],
       "imageUrl": "products/TREKKING SHOES Sneaker.jpg"
     },
@@ -275,7 +278,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-        2
+        3
       ],
       "imageUrl": "products/trick meat.jpg"
     },
@@ -286,6 +289,7 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
+        1,
         2
       ],
       "imageUrl": "products/wodenBeach Chairs.jpg"
@@ -315,6 +319,16 @@
           "productId": 2,
           "quantity": 3,
           "price": 45
+        },
+        {
+          "productId": 14,
+          "quantity": 2,
+          "price": 250
+        },
+        {
+          "productId": 15,
+          "quantity": 1,
+          "price": 250
         }
       ]
     }

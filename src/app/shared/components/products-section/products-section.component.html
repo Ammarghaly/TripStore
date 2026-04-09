@@ -6,7 +6,7 @@
       *ngFor="let product of productService.products().slice(0, 4)">
       
       <app-product-card
-        [products]="product"
+        [product]="product"
         (addToCart)="handleAddToCart($event)">
       </app-product-card>
 

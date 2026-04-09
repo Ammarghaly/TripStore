@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Category } from '../../../core/models/category';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class CategoryCardComponent {
 
   @Output() categoryClick = new EventEmitter<number>()
 
-  onClick(){
-    this.categoryClick.emit(this.category.id)
-  }
+  router = inject(Router);
+
+  goToProducts(id: number) {
+  this.router.navigate(['/products', id]);
+}
 }

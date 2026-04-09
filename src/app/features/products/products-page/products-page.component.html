@@ -5,8 +5,8 @@
   </p>
 
   <div class="row gx-3 gy-4">
-    <div class="col-md-3" *ngFor="let product of productService.pagedProducts">
-      <app-product-card [products]="product" (addToCart)="handleAddToCart($event)">
+    <div class="col-md-3" *ngFor="let product of pagedFilteredProducts()">
+      <app-product-card [product]="product" (addToCart)="handleAddToCart($event)">
       </app-product-card>
     </div>
   </div>
@@ -14,13 +14,14 @@
   <div class="d-flex justify-content-center mt-4">
     <button
       class="btn btn-outline-light me-2"
+      [disabled]="productService.currentPage() === 1"
       (click)="productService.goToPage(productService.currentPage() - 1)"
     >
       Previous
     </button>
 
     <button
-      *ngFor="let page of [].constructor(productService.totalPages()); let i = index"
+      *ngFor="let page of [].constructor(totalPages()); let i = index"
       class="btn me-1"
       [ngClass]="i + 1 === productService.currentPage() ? 'btn-light' : 'btn-outline-light'"
       (click)="productService.goToPage(i + 1)"

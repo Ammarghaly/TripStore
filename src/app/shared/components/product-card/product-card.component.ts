@@ -9,17 +9,18 @@ import { Router } from '@angular/router';
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
-  @Input() products!: Product;
+  @Input() product!: Product;
 
   @Output() addToCart = new EventEmitter<Product>();
 
   constructor(private router: Router){}
 
+  
   onAddToCart() {
-    this.addToCart.emit(this.products);
+    this.addToCart.emit(this.product);
   }
 
-  goToDetails(){
-    this.router.navigate(['/product', this.products.id])
-  }
+  goToDetails() {
+  this.router.navigate(['/product-details', this.product.id]);
+}
 }
