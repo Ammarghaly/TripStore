@@ -2,66 +2,36 @@ body {
   background-color: #0d0f0f;
   color: white;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 0;
-  padding-top: 40px;
+  padding: 0;
 }
-
-.header {
-  padding-top: 10px;
-  width: 100%;
-  display: flex;
-  gap: 1000px;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* .logo- img {
-  height: 30px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
-  font-size: 14px;
-}
-
-.user-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 1px solid #333;
-  background: none;
-  color: white;
-  cursor: pointer;
-} */
 
 .main-container {
-  height: 90vh;
-  margin: auto;
-  width: 70%;
-
+  margin: 100px auto 20px;
+  width: 90%;
+  max-width: 900px;
   background-color: #141616;
   border: 1px solid #2d3333;
   border-radius: 20px;
   display: flex;
   overflow: hidden;
-  justify-content: center;
 }
 
 .login-img {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.login-img img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .form {
-  width: 40%;
-  padding: 60px;
+  flex: 1;
+   padding: 30px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,32 +39,32 @@ body {
 
 .form-content h2 {
   color: white;
-  font-size: 28px;
-  margin: 0 0 10px 0;
+  font-size: 24px;
+  margin: 0 0 5px 0;
 }
 
 .form-content p {
   color: #888;
-  font-size: 14px;
-  margin-bottom: 30px;
+  font-size: 13px;
+  margin-bottom: 20px;
 }
 
 .inputs-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 label {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   color: aliceblue;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: bold;
 }
 
 .input {
   background-color: #1c1f1f;
   border: 1px solid #333;
-  padding: 12px 15px;
+  padding: 10px 12px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -118,14 +88,17 @@ label {
 .input input::placeholder {
   color: #6b7280;
 }
+
 .input i {
   color: #6b7280;
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #1c1f1f inset;
   -webkit-text-fill-color: white;
 }
+
 .link-forgot {
   display: flex;
   justify-content: flex-end;
@@ -134,33 +107,30 @@ input:-webkit-autofill:focus {
   font-size: 12px;
   font-weight: bold;
 }
-.fa-envelope {
-  color: #888;
-  cursor: pointer;
-}
-.fa-lock {
-  color: #888;
-  cursor: pointer;
-}
+
+.fa-envelope,
+.fa-lock,
 .toggle-pass {
   color: #888;
   cursor: pointer;
 }
+
 .btn-submit {
   width: 100%;
   background-color: #22c55e;
   color: white;
   border: none;
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 5px;
+  font-size: 14px;
 }
 
 .separator {
   text-align: center;
-  margin: 30px 0;
+  margin: 20px 0;
   border-bottom: 1px solid #333;
   line-height: 0.1em;
 }
@@ -168,45 +138,35 @@ input:-webkit-autofill:focus {
 .separator span {
   padding: 0 10px;
   color: #888;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 .social-buttons {
   display: flex;
-  gap: 30px;
+  gap: 15px;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 5px;
 }
+
 .social-buttons button {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 40px;
+  gap: 8px;
+  padding: 8px 30px;
   border: 1px solid #9ca3af;
   border-radius: 20px;
   cursor: pointer;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-}
-
-.google {
-  background-color: transparent;
-  color: white;
-}
-
-.apple {
+  font-size: 13px;
   background-color: transparent;
   color: white;
 }
 
 .footer-note {
   text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
+  margin-top: 20px;
+  font-size: 13px;
   color: #888;
 }
 
@@ -215,9 +175,26 @@ input:-webkit-autofill:focus {
   text-decoration: none;
   font-weight: bold;
 }
+
 .error-msg {
   color: #ff4d4f;
   margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .login-img {
+    display: none;
+  }
+
+  .form {
+    width: 100%;
+    padding: 40px 30px;
+  }
 }

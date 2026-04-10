@@ -1,151 +1,131 @@
-<div class="container-fluid py-4">
+<div class="container py-4 px-2" style="padding-top: 100px !important;">
+  <h2 class="text-white mb-1">All Adventure Kits</h2>
+  <p class="text-secondary mb-5">
+    Rugged, premium, and tactical outdoor gear curated for your next expedition into the wild.
+  </p>
+
   <div class="row">
-    <!-- Filter Sidebar -->
     <div class="col-lg-3 col-md-4 mb-4">
-      <div class="filter-sidebar">
-        <h5 class="text-white mb-3">Filters</h5>
-        
-        <!-- Categories Filter -->
-        <div class="filter-section mb-4">
-          <h6 class="text-white mb-3">Categories</h6>
-          <div class="category-grid">
+      <aside class="filter-sidebar">
+        <section class="filter-section">
+          <h3 class="filter-heading">CATEGORIES</h3>
+          <div class="filter-buttons">
             <button 
-              class="category-btn" 
-              [class.active]="productService.selectedCategory() === null"
+              class="filter-btn" 
+              [class.active]="!productService.selectedCategory()"
               (click)="selectCategory(null)">
-              <i class="bi bi-grid"></i>
+              <i class="bi bi-grid-3x3-gap"></i>
               <span>All Kits</span>
             </button>
             <button 
-              class="category-btn" 
+              class="filter-btn" 
               [class.active]="productService.selectedCategory() === 1"
               (click)="selectCategory(1)">
               <i class="bi bi-basket"></i>
               <span>Picnic</span>
             </button>
             <button 
-              class="category-btn" 
+              class="filter-btn"
               [class.active]="productService.selectedCategory() === 2"
               (click)="selectCategory(2)">
-              <i class="bi bi-brightness-high"></i>
+              <i class="bi bi-water"></i>
               <span>Beach</span>
             </button>
             <button 
-              class="category-btn" 
+              class="filter-btn"
               [class.active]="productService.selectedCategory() === 3"
               (click)="selectCategory(3)">
               <i class="bi bi-fire"></i>
               <span>BBQ</span>
             </button>
             <button 
-              class="category-btn" 
+              class="filter-btn"
               [class.active]="productService.selectedCategory() === 4"
               (click)="selectCategory(4)">
-              <i class="bi bi-house"></i>
+              <i class="bi bi-tree-fill"></i>
               <span>Camping</span>
             </button>
             <button 
-              class="category-btn" 
+              class="filter-btn"
               [class.active]="productService.selectedCategory() === 5"
               (click)="selectCategory(5)">
-              <i class="bi bi-tree"></i>
-              <span>Hiking</span>
-            </button>
-            <button 
-              class="category-btn" 
-              [class.active]="productService.selectedCategory() === 6"
-              (click)="selectCategory(6)">
-              <i class="bi bi-water"></i>
+              <i class="bi bi-tsunami"></i>
               <span>Fishing</span>
             </button>
+            <button 
+              class="filter-btn"
+              [class.active]="productService.selectedCategory() === 6"
+              (click)="selectCategory(6)">
+              <i class="bi bi-triangle-fill"></i>
+              <span>Hiking</span>
+            </button>
           </div>
-        </div>
+        </section>
 
-        <!-- Price Range Filter -->
-        <div class="filter-section">
-          <h6 class="text-white mb-3">Price Range</h6>
-          <div class="price-inputs mb-3">
-            <div class="price-input-group">
-              <label class="text-secondary small">Min</label>
-              <input 
-                type="number" 
-                class="form-control form-control-sm" 
-                [value]="minPrice()"
-                (input)="minPrice.set(+$any($event.target).value); onPriceChange()"
-                min="0"
-                max="500">
-            </div>
-            <div class="price-input-group">
-              <label class="text-secondary small">Max</label>
-              <input 
-                type="number" 
-                class="form-control form-control-sm" 
-                [value]="maxPrice()"
-                (input)="maxPrice.set(+$any($event.target).value); onPriceChange()"
-                min="0"
-                max="500">
-            </div>
+        <section class="filter-section">
+          <div class="price-header">
+            <h3 class="filter-heading">PRICE RANGE</h3>
+            <span class="price-display">${{minPrice()}} - ${{maxPrice()}}</span>
           </div>
-          <div class="price-range-slider">
+          <div class="price-slider-container">
+            <div class="price-track">
+              <div 
+                class="price-range" 
+                [style.left.%]="minPricePercent" 
+                [style.right.%]="100 - maxPricePercent">
+              </div>
+            </div>
             <input 
               type="range" 
-              class="form-range" 
               min="0" 
               max="500" 
               [value]="minPrice()"
-              (input)="minPrice.set(+$any($event.target).value); onPriceChange()">
+              (input)="minPrice.set(+$any($event.target).value); onPriceChange()"
+              class="price-input price-input-min">
             <input 
               type="range" 
-              class="form-range" 
               min="0" 
               max="500" 
               [value]="maxPrice()"
-              (input)="maxPrice.set(+$any($event.target).value); onPriceChange()">
+              (input)="maxPrice.set(+$any($event.target).value); onPriceChange()"
+              class="price-input price-input-max">
           </div>
-          <div class="text-secondary small text-center mt-2">
-            ${{ minPrice() }} - ${{ maxPrice() }}
-          </div>
-        </div>
-      </div>
+        </section>
+      </aside>
     </div>
 
-    <!-- Products Grid -->
     <div class="col-lg-9 col-md-8">
-      <h2 class="text-white mb-1">All Adventure Products</h2>
-      <p class="text-secondary mb-4">
-        Rugged, premium, and tactical outdoor gear curated for your next expedition into the wild.
-      </p>
-
-      <div class="row gx-3 gy-4">
+      <div class="row g-3">
         <div class="col-lg-4 col-md-6" *ngFor="let product of pagedFilteredProducts()">
-          <app-product-card [product]="product" (addToCart)="handleAddToCart($event)">
+          <app-product-card 
+            [product]="product" 
+            (addToCart)="handleAddToCart($event)">
           </app-product-card>
         </div>
       </div>
-
-      <div class="d-flex justify-content-center mt-4" *ngIf="totalPages() > 1">
-        <button
-          class="btn btn-outline-light me-2"
-          [disabled]="productService.currentPage() === 1"
-          (click)="productService.goToPage(productService.currentPage() - 1)">
-          Previous
-        </button>
-
-        <button
-          *ngFor="let page of [].constructor(totalPages()); let i = index"
-          class="btn me-1"
-          [ngClass]="i + 1 === productService.currentPage() ? 'btn-light' : 'btn-outline-light'"
-          (click)="productService.goToPage(i + 1)">
-          {{ i + 1 }}
-        </button>
-
-        <button
-          class="btn btn-outline-light ms-2"
-          [disabled]="productService.currentPage() === totalPages()"
-          (click)="productService.goToPage(productService.currentPage() + 1)">
-          Next
-        </button>
-      </div>
     </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <button
+      class="btn btn-outline-light me-2"
+      [disabled]="productService.currentPage() === 1"
+      (click)="productService.goToPage(productService.currentPage() - 1)">
+      Previous
+    </button>
+
+    <button
+      *ngFor="let page of [].constructor(totalPages()); let i = index"
+      class="btn me-1"
+      [ngClass]="i + 1 === productService.currentPage() ? 'btn-light' : 'btn-outline-light'"
+      (click)="productService.goToPage(i + 1)">
+      {{ i + 1 }}
+    </button>
+
+    <button
+      class="btn btn-outline-light ms-2"
+      (click)="productService.goToPage(productService.currentPage() + 1)">
+      Next
+    </button>
   </div>
 </div>

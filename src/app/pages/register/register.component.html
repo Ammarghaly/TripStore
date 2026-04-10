@@ -39,7 +39,7 @@
         <label>Password</label>
         <div class="input">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" formControlName="password" placeholder="••••••••" />
+          <input type="password" formControlName="password" placeholder="••••••••" id="password" />
           <i class="fa-regular fa-eye toggle-pass" (click)="togglePassword('password')"></i>
         </div>
         <div
@@ -59,7 +59,8 @@
         <label>Confirm Password</label>
         <div class="input">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
+          <input type="password" formControlName="confirmPassword" placeholder="••••••••" id="confirmPassword" />
+          <i class="fa-regular fa-eye toggle-pass" (click)="togglePassword('confirmPassword')"></i>
         </div>
         <div
           class="error-msg"
@@ -97,6 +98,7 @@
     <p class="footer-note">Already have an account? <a routerLink="/login">Login</a></p>
   </section>
 
-  <section class="login-img"></section>
-  <img src="Branding.png" alt="register-img" />
+  <section class="login-img">
+    <img src="Branding.png" alt="register-img" />
+  </section>
 </main>

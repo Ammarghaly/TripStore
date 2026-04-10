@@ -33,12 +33,21 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.post('/register', (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   const userExists = router.db.get('users').find({ email }).value();
   if (userExists) return res.status(400).json({ message: 'User already exists' });
 
-  const newUser = router.db.get('users').insert(req.body).write();
-  const accessToken = createToken({ id: newUser.id, email: newUser.email });
+  const newUser = router.db.get('users').insert({ 
+    ...req.body, 
+    role: 'user' 
+  }).write();
+  
+  const accessToken = createToken({ 
+    id: newUser.id, 
+    email: newUser.email, 
+    role: newUser.role || 'user',
+    name: newUser.name 
+  });
   res.status(201).json({ accessToken });
 });
 
@@ -47,7 +56,12 @@ server.post('/login', (req, res) => {
   const user = router.db.get('users').find({ email, password }).value();
   if (!user) return res.status(401).json({ message: 'Incorrect email or password' });
 
-  const accessToken = createToken({ id: user.id, email: user.email });
+  const accessToken = createToken({ 
+    id: user.id, 
+    email: user.email, 
+    role: user.role || 'user',
+    name: user.name 
+  });
   res.status(200).json({ accessToken });
 });
 

@@ -20,10 +20,8 @@
     </div>
 
     <div class="row g-5">
-      <!-- Left Column: Form -->
       <div class="col-lg-7 form-column">
         <form [formGroup]="checkoutForm" novalidate>
-          <!-- Section 1 -->
           <h4 class="section-title text-white mb-4">
             <span class="step-badge">1</span> Shipping Information
           </h4>
@@ -142,7 +140,6 @@
             </div>
           </div>
 
-          <!-- Section 2 -->
           <h4 class="section-title text-white mb-4 mt-4">
             <span class="step-badge">2</span> Payment Method
           </h4>
@@ -151,7 +148,7 @@
               <div
                 class="payment-card p-3 d-flex align-items-center rounded"
                 [class.selected]="checkoutForm.get('paymentMethod')?.value === 'creditCard'"
-                (click)="checkoutForm.get('paymentMethod')?.setValue('creditCard')"
+                (click)="selectPaymentMethod('creditCard')"
               >
                 <input
                   class="form-check-input mt-0 me-3 custom-radio"
@@ -168,17 +165,17 @@
             <div class="col-md-6">
               <div
                 class="payment-card p-3 d-flex align-items-center rounded"
-                [class.selected]="checkoutForm.get('paymentMethod')?.value === 'paypal'"
-                (click)="checkoutForm.get('paymentMethod')?.setValue('paypal')"
+                [class.selected]="checkoutForm.get('paymentMethod')?.value === 'cod'"
+                (click)="selectPaymentMethod('cod')"
               >
                 <input
                   class="form-check-input mt-0 me-3 custom-radio"
                   type="radio"
-                  value="paypal"
+                  value="cod"
                   formControlName="paymentMethod"
-                  id="paypal"
+                  id="cod"
                 />
-                <label class="form-check-label text-white w-100" for="paypal">PayPal</label>
+                <label class="form-check-label text-white w-100" for="cod">Cash on Delivery</label>
               </div>
             </div>
           </div>
@@ -280,7 +277,6 @@
         </form>
       </div>
 
-      <!-- Right Column: Order Summary -->
       <div class="col-lg-5">
         <div class="order-summary-card p-4 rounded-4">
           <h4 class="text-white mb-4 fs-5 fw-bold">Order Summary</h4>

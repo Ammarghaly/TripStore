@@ -5,6 +5,7 @@ import { OrderService } from '../../../core/services/order.service';
 import { Order } from '../../../core/models/order.model';
 import { CartItem } from '../../../core/models/cart.model';
 import { BookingService } from '../../../core/services/booking.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -28,9 +29,9 @@ export class CheckoutComponent implements OnInit {
     city: '',
     zip: '',
     paymentMethod: 'creditCard',
-    cardNumber: '',
-    expiry: '',
-    cvc: ''
+    cardNumber: '4532015112830366',
+    expiry: '12/25',
+    cvc: '123'
   };
 
   checkoutForm!: FormGroup;
@@ -40,9 +41,10 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
-    private router: Router
-    , private bookingService: BookingService
-    , private fb: FormBuilder
+    private router: Router,
+    private bookingService: BookingService,
+    private fb: FormBuilder,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -70,13 +72,51 @@ export class CheckoutComponent implements OnInit {
       city: [this.checkoutData.city],
       zip: [this.checkoutData.zip],
       paymentMethod: [this.checkoutData.paymentMethod, Validators.required],
-      cardNumber: [this.checkoutData.cardNumber, [Validators.required, Validators.pattern(/^\d{16}$/)]],
-      expiry: [this.checkoutData.expiry, [Validators.required, this.expiryValidator()]],
-      cvc: [this.checkoutData.cvc, [Validators.required, Validators.pattern(/^\d{3,4}$/)]]
+      cardNumber: [this.checkoutData.cardNumber],
+      expiry: [this.checkoutData.expiry],
+      cvc: [this.checkoutData.cvc]
     });
 
-    // keep checkoutData in sync for legacy usage
     this.checkoutForm.valueChanges.subscribe(v => Object.assign(this.checkoutData, v));
+    
+    this.updatePaymentValidators();
+    
+    this.checkoutForm.get('paymentMethod')?.valueChanges.subscribe(() => {
+      this.updatePaymentValidators();
+    });
+  }
+
+  updatePaymentValidators() {
+    const paymentMethod = this.checkoutForm.get('paymentMethod')?.value;
+    const cardNumber = this.checkoutForm.get('cardNumber');
+    const expiry = this.checkoutForm.get('expiry');
+    const cvc = this.checkoutForm.get('cvc');
+
+    if (paymentMethod === 'creditCard') {
+      cardNumber?.setValidators([Validators.required, Validators.pattern(/^\d{16}$/)]);
+      expiry?.setValidators([Validators.required, this.expiryValidator()]);
+      cvc?.setValidators([Validators.required, Validators.pattern(/^\d{3,4}$/)]);
+    } else {
+      cardNumber?.clearValidators();
+      expiry?.clearValidators();
+      cvc?.clearValidators();
+    }
+
+    cardNumber?.updateValueAndValidity();
+    expiry?.updateValueAndValidity();
+    cvc?.updateValueAndValidity();
+  }
+
+  selectPaymentMethod(method: string) {
+    this.checkoutForm.get('paymentMethod')?.setValue(method);
+    
+    if (method === 'creditCard') {
+      this.checkoutForm.patchValue({
+        cardNumber: '4532015112830366',
+        expiry: '12/25',
+        cvc: '123'
+      });
+    }
   }
 
   expiryValidator(): ValidatorFn {
@@ -112,24 +152,63 @@ export class CheckoutComponent implements OnInit {
       this.checkoutForm.markAllAsTouched();
       return;
     }
-    // Build booking payload and navigate to booking confirmation
+    
+    this.isProcessing = true;
     const fv = this.checkoutForm.value;
-    const bookingPayload = {
-      confirmationNumber: `#BK-${Math.random().toString(36).substring(2,8).toUpperCase()}`,
-      hotelName: this.cartDetails[0]?.product?.name || 'Selected Property',
-      checkIn: new Date().toISOString(),
-      checkOut: (() => { const d = new Date(); d.setDate(d.getDate() + 4); return d.toISOString(); })(),
-      durationNights: 4,
-      guests: '2 Adults',
-      subtotal: this.subtotal,
-      conciergeFee: 0,
-      totalPaid: this.total,
-      paymentMethod: fv.paymentMethod === 'creditCard' ? `Card •••• ${String(fv.cardNumber).slice(-4)}` : fv.paymentMethod,
-      email: fv.email,
-      phone: fv.phone
+    const userId = this.authService.getUserId() || '1';
+    const paymentMethodDisplay = fv.paymentMethod === 'creditCard' 
+      ? `Card •••• ${String(fv.cardNumber).slice(-4)}` 
+      : 'Cash on Delivery';
+    
+    const shippingAddress = `${fv.fullName}, ${fv.address}, ${fv.city}, ${fv.zip}`;
+    
+    const orderPayload: Order = {
+      userId: +userId,
+      orderDate: new Date().toISOString(),
+      totalAmount: this.total,
+      status: 'pending',
+      shippingAddress: shippingAddress,
+      items: this.cartDetails.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity,
+        price: item.price
+      }))
     };
 
-    this.bookingService.setBooking(bookingPayload as any);
-    this.router.navigate(['/booking-confirmation']);
+    this.orderService.createOrder(orderPayload).subscribe({
+      next: (order) => {
+        this.cartService.clearCart(this.cartId).subscribe({
+          next: () => {
+            const bookingPayload = {
+              confirmationNumber: `#BK-${Math.random().toString(36).substring(2,8).toUpperCase()}`,
+              hotelName: this.cartDetails[0]?.product?.name || 'Selected Property',
+              checkIn: new Date().toISOString(),
+              checkOut: (() => { const d = new Date(); d.setDate(d.getDate() + 4); return d.toISOString(); })(),
+              durationNights: 4,
+              guests: '2 Adults',
+              subtotal: this.subtotal,
+              conciergeFee: 0,
+              totalPaid: this.total,
+              paymentMethod: paymentMethodDisplay,
+              email: fv.email,
+              phone: fv.phone
+            };
+
+            this.bookingService.setBooking(bookingPayload as any);
+            this.isProcessing = false;
+            this.router.navigate(['/booking-confirmation']);
+          },
+          error: (err) => {
+            console.error('Error clearing cart', err);
+            this.isProcessing = false;
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error creating order', err);
+        this.isProcessing = false;
+        alert('Failed to create order. Please try again.');
+      }
+    });
   }
 }

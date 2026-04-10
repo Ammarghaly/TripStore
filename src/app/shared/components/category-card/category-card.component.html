@@ -1,16 +1,7 @@
-<div
-  class="position-relative rounded-4 overflow-hidden w-100 h-100"
-  (click)="goToProducts(category.id)"
-  style="cursor: pointer"
->
-  <img
-    [src]="category.imageUrl"
-    alt="title"
-    class="w-100 h-100 object-fit-cover"
-    style="object-fit: cover"
-  />
-  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: #00000066"></div>
-  <div class="position-absolute bottom-0 start-0 w-100 px-2 pb-3">
-    <h6 class="text-white fw-bold m-0">{{ category.name }}</h6>
+<div class="category-card position-relative" (click)="goToProducts(category.id)">
+  <img [src]="category.imageUrl" [alt]="category.name" class="category-image" />
+  <div class="category-overlay"></div>
+  <div class="category-content">
+    <h3 class="category-title">{{ category.name }}</h3>
   </div>
 </div>

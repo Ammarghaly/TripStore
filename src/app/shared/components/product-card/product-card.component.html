@@ -1,22 +1,20 @@
-<div
-  class="card shadow-sm border-0 bg-dark text-white"
-  (click)="goToDetails()"
-  style="cursor: pointer; max-width: 320px; margin: 0 auto; background-color: #1F2121 !important;"
->
-  <img [src]="product.imageUrl" class="card-img-top" style="height: 200px; object-fit: cover" />
+  <div
+    class="card shadow-sm border-0 text-white"
+    (click)="goToDetails()"
+    style="cursor: pointer; max-width: 320px; margin: 0 auto; background-color: #1F2121;"
+  >
+    <img [src]="product.imageUrl" class="card-img-top" style="height: 240px; object-fit: cover" />
 
-  <div class="card-body d-flex flex-column" style="padding: 12px;">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h6 class="fw-bold" style="font-size: 0.95rem; margin: 0;">{{ product.name }}</h6>
-      <h6 class="fw-bold text-secondary" style="font-size: 0.95rem; margin: 0;">{{ product.price }} $</h6>
+    <div class="card-body d-flex flex-column p-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">{{ product.name }}</h6>
+        <h6 class="fw-bold text-secondary mb-0" style="font-size: 0.95rem;">{{ product.price }} $</h6>
+      </div>
+      <div class="mb-2">
+        <span class="text-warning" style="font-size: 0.85rem;">★★★★☆ </span>
+      </div>
+      <button class="btn btn-success w-100 btn-sm" (click)="onAddToCart(); $event.stopPropagation()">
+        Add to Cart
+      </button>
     </div>
-    <div class="mb-2">
-      <span class="text-warning" style="font-size: 0.85rem;">
-        ★★★★☆ 
-      </span>
-    </div>
-    <button class="btn btn-success w-100" style="padding: 8px; font-size: 0.9rem;" (click)="onAddToCart(); $event.stopPropagation()">
-      Add to Cart
-    </button>
   </div>
-</div>

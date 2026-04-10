@@ -2,6 +2,7 @@
   background: radial-gradient(ellipse at center, rgba(22,26,25,0.7), rgba(8,10,9,1));
   min-height: 100vh;
   padding-bottom: 60px;
+  padding-top: 100px;
 }
 
 .fade-in {

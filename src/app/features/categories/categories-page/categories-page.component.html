@@ -1,20 +1,17 @@
-<div class="container py-5 text-white">
-  <p class="text-secondary mb-2">Collections</p>
-
-  <h1 class="fw-bold mb-3">Explore Categories</h1>
-
-  <p class="text-muted mb-5" style="max-width: 600px">
-    Discover curated gear sets tailored for your favorite outdoor activities, designed for peak
-    performance and rugged durability.
+<div class="container py-5 text-white" style="padding-top: 100px !important;">
+  <p class="text-uppercase text-muted mb-2" style="font-size: 0.75rem; letter-spacing: 2px; font-weight: 600;">COLLECTIONS</p>
+  <h1 class="fw-bold mb-3" style="font-size: 3rem;">Explore Categories</h1>
+  <p class="text-muted mb-5" style="max-width: 700px; font-size: 1.1rem; line-height: 1.6;">
+    Discover curated gear sets tailored for your favorite outdoor activities, designed for peak performance and rugged durability.
   </p>
 
   <div class="row g-4 justify-content-center">
     @for (cat of categoryService.categories(); track cat.id) {
-      <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div style="width: 350px; height: 250px" class="">
-          <app-category-card [category]="cat"> </app-category-card>
-        </div>
+      <div class="col-lg-4 col-md-6 col-sm-12" style="max-width: 350px;">
+        <app-category-card [category]="cat"></app-category-card>
       </div>
     }
   </div>
+  <app-ai-kit-builder></app-ai-kit-builder>
+
 </div>

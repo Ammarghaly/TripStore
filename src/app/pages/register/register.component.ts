@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { AlertService } from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +13,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   passwordMismatch: boolean = false;
+
+  private authService = inject(AuthService);
+  private alertService = inject(AlertService);
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {}
 
@@ -28,23 +35,41 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  showPassword = false;
-
   togglePassword(field: string) {
-    const input: any = document.getElementById(field);
-
-    this.showPassword = !this.showPassword;
-
-    if (this.showPassword) {
-      input.type = 'text';
-    } else {
-      input.type = 'password';
+    const input = document.getElementById(field) as HTMLInputElement;
+    if (input) {
+      input.type = input.type === 'password' ? 'text' : 'password';
+      
+      const icon = input.parentElement?.querySelector('.toggle-pass');
+      if (icon) {
+        if (input.type === 'text') {
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      }
     }
   }
 
   onSubmit() {
     if (this.registerForm.valid && !this.passwordMismatch) {
-      console.log(this.registerForm.value);
+      const { fullName, email, password } = this.registerForm.value;
+      
+      this.authService.register({ 
+        name: fullName, 
+        email, 
+        password 
+      }).subscribe({
+        next: (response) => {
+          this.alertService.show('Success', 'Registration successful!');
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          this.alertService.show('Error', error.error?.message || 'Registration failed');
+        }
+      });
     }
   }
 }

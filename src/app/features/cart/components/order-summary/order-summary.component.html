@@ -1,7 +1,6 @@
 <div class="order-summary-card p-4 text-white">
   <h4 class="summary-title fw-bold mb-4">Order Summary</h4>
   
-  <!-- Cost Breakdown -->
   <div class="d-flex justify-content-between mb-3 summary-row">
     <span class="text-secondary opacity-75">Subtotal</span>
     <span class="fw-bold">${{ subtotal | number:'1.2-2' }}</span>
@@ -15,13 +14,11 @@
     <span class="fw-bold">${{ tax | number:'1.2-2' }}</span>
   </div>
 
-  <!-- Total -->
   <div class="d-flex justify-content-between mb-4 align-items-center">
     <span class="fs-4 fw-bold">Total</span>
     <span class="fs-3 fw-bold total-price">${{ total | number:'1.2-2' }}</span>
   </div>
 
-  <!-- Promo Code Section -->
   <div class="promo-section mb-4">
     <p class="text-secondary text-uppercase fw-bold small opacity-75 mb-2">Promo Code</p>
     <div class="d-flex gap-2">
@@ -30,7 +27,6 @@
     </div>
   </div>
 
-  <!-- Checkout Button -->
   <button class="btn w-100 fw-bold py-3 mb-5 checkout-btn-v2 d-flex align-items-center justify-content-center gap-2" routerLink="/checkout">
     <span>Proceed to Checkout</span>
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -38,7 +34,6 @@
     </svg>
   </button>
 
-  <!-- Trust Badges -->
   <div class="trust-badges d-flex flex-column gap-3">
     <div class="d-flex align-items-center gap-3 trust-item">
       <div class="icon-circle">

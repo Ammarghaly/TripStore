@@ -1,5 +1,4 @@
 <div class="cart-item-card p-3 d-flex align-items-center mb-3">
-  <!-- Image Container -->
   <div class="item-img-container rounded-3 me-3 overflow-hidden d-flex align-items-center justify-content-center bg-white">
     <img 
       [src]="item.product?.imageUrl || 'assets/placeholder.png'" 
@@ -8,7 +7,6 @@
       class="item-img">
   </div>
   
-  <!-- Info Section -->
   <div class="flex-grow-1">
     <h5 class="item-title m-0 mb-1 fw-bold text-white">{{ item.product?.name || 'Unknown Item' }}</h5>
     <p class="item-variant m-0 mb-2">
@@ -22,9 +20,7 @@
     </div>
   </div>
 
-  <!-- Actions Section (Quantity, Price, Remove) -->
   <div class="d-flex flex-column align-items-end justify-content-between h-100 ms-3">
-    <!-- Quantity Selector -->
     <div class="qty-selector d-flex align-items-center rounded-3 px-1 py-1 mb-3">
       <button class="btn btn-link text-secondary p-1 border-0" (click)="decrement()">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
@@ -35,7 +31,6 @@
       </button>
     </div>
 
-    <!-- Price and Remove -->
     <div class="d-flex align-items-center gap-3">
       <span class="price-v2 fw-bold text-white fs-4">${{ item.price | number:'1.2-2' }}</span>
       <button class="btn btn-link text-secondary p-1 border-0 remove-btn" (click)="remove()">

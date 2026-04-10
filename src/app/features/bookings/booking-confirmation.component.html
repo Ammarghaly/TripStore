@@ -40,8 +40,6 @@
                 <button class="btn btn-cta btn-success" (click)="goToBookings()">
                   View My Bookings
                 </button>
-                <button class="btn btn-outline-cta" (click)="downloadPdf()">Download PDF</button>
-                <button class="btn btn-outline-cta" (click)="openConfirmModal()">Save</button>
               </div>
 
               <div class="d-flex gap-3 mt-4">
@@ -122,33 +120,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div *ngIf="showModal" class="confirm-modal">
-    <div class="backdrop" (click)="closeConfirmModal()"></div>
-    <div class="modal-panel p-4 text-center text-white">
-      <h5 class="mb-2">Save Booking</h5>
-      <p class="text-muted mb-3">Save this booking to your account for easy access later.</p>
-      <div class="d-flex justify-content-center gap-3">
-        <button class="btn btn-success" (click)="saveBooking(); closeConfirmModal()">Save</button>
-        <button class="btn btn-outline-light" (click)="closeConfirmModal()">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast -->
-  <div class="toast-wrap position-fixed bottom-0 end-0 p-3" style="z-index: 2000">
-    <div class="toast show align-items-center text-white bg-success border-0" *ngIf="showToast">
-      <div class="d-flex align-items-center">
-        <div class="toast-body">Booking saved successfully</div>
-        <button
-          type="button"
-          class="btn-close btn-close-white ms-2"
-          (click)="showToast = false"
-        ></button>
       </div>
     </div>
   </div>

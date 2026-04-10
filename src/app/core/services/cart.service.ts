@@ -65,10 +65,6 @@ export class CartService {
             const details = cart.items.map((item, index) => {
               let product = products[index] || undefined;
               
-              if (product && product.imageUrl && !product.imageUrl.startsWith('http')) {
-                product.imageUrl = `assets/${product.imageUrl}`;
-              }
-              
               return { ...item, product };
             });
             return { cart, details };

@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../../../core/models/product';
-import { map, switchMap, catchError, finalize } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { AlertService } from '../../../shared/alert/alert.service';
 import { CartService } from '../../../core/services/cart.service';
 import { AuthService } from '../../../core/services/auth.service';
@@ -53,11 +51,16 @@ export class ProductsService {
     });
   }
 
+  getUserCart() {
+    const userId = this.authService.getUserId() || '1';
+    return this.http.get<any[]>(`http://localhost:3000/carts?userId=${userId}`);
+  }
+
   addToCart(product: Product) {
     if (!this.authService.isAuthenticated()) {
       this.alertService.confirm(
         'Login Required',
-        'You need to login to add items to cart',
+        'Please login to add items to cart',
         () => {
           this.router.navigate(['/login']);
         }
@@ -65,65 +68,68 @@ export class ProductsService {
       return;
     }
 
-    const userId = this.authService.getUserId();
-    if (!userId) {
-      this.alertService.show('Error', 'Unable to get user information');
-      return;
-    }
-
-    this.http.get<any[]>(`http://localhost:3000/carts?userId=${userId}`)
-      .pipe(
-        switchMap(carts => {
-          let cart = carts[0];
-          
-          if (!cart) {
-            const newCart = {
-              userId: +userId,
-              items: [{
-                productId: product.id,
-                quantity: 1,
-                price: product.price,
-              }],
-            };
-            return this.http.post('http://localhost:3000/carts', newCart);
-          } else {
-            const existingItem = cart.items.find((i: any) => i.productId === product.id);
-
-            if (existingItem) {
-              existingItem.quantity += 1;
+    this.getUserCart().subscribe((carts) => {
+      let cart = carts[0];
+      if (!cart) {
+        const userId = this.authService.getUserId() || '1';
+        const newCart = {
+          userId: +userId,
+          items: [
+            {
+              productId: product.id,
+              quantity: 1,
+              price: product.price,
+            },
+          ],
+        };
+        this.http.post('http://localhost:3000/carts', newCart).subscribe({
+          next: (res: any) => {
+            console.log('created cart', res);
+            this.cartService.refreshCart();
+            this.alertService.show('Success', 'Product added to cart successfully!');
+          },
+          error: (err) => {
+            console.error('Error creating cart', err);
+            if (err.status === 401) {
+              this.authService.logout();
+              this.alertService.confirm(
+                'Session Expired',
+                'Your session has expired. Please login again.',
+                () => {
+                  this.router.navigate(['/login']);
+                }
+              );
             } else {
-              cart.items.push({
-                productId: product.id,
-                quantity: 1,
-                price: product.price,
-              });
+              this.alertService.show('Error', 'Failed to add product to cart.');
             }
-            return this.http.put(`http://localhost:3000/carts/${cart.id}`, cart);
           }
-        }),
-        catchError(error => {
-          if (error.status === 401) {
-            this.alertService.show('Session Expired', 'Please login again');
-            this.authService.logout();
-            this.router.navigate(['/login']);
-          } else {
-            this.alertService.show('Error', 'Failed to add product to cart');
+        });
+      } else {
+        this.cartService.addItemToCart(cart.id, {
+          productId: product.id,
+          quantity: 1,
+          price: product.price
+        }).subscribe({
+          next: () => {
+            this.alertService.show('Success', 'Product added to cart successfully!');
+          },
+          error: (err) => {
+            console.error('Error adding to cart', err);
+            if (err.status === 401) {
+              this.authService.logout();
+              this.alertService.confirm(
+                'Session Expired',
+                'Your session has expired. Please login again.',
+                () => {
+                  this.router.navigate(['/login']);
+                }
+              );
+            } else {
+              this.alertService.show('Error', 'Failed to add product to cart.');
+            }
           }
-          return of(null);
-        }),
-        finalize(() => {
-          this.cartService.refreshCart();
-        })
-      )
-      .subscribe({
-        next: (response) => {
-          if (response) {
-            this.alertService.show('Success', 'Product added to cart successfully');
-          }
-        },
-        error: (error) => {
-          console.error('Error adding to cart', error);
-        }
-      });
+        });
+      }
+    });
   }
 }

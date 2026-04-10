@@ -5,6 +5,7 @@
       "email": "user1@example.com",
       "password": "password123",
       "name": "John Doe",
+      "role": "user",
       "shippingAddress": "123 Main St, New York, USA"
     },
     {
@@ -12,6 +13,7 @@
       "email": "user2@example.com",
       "password": "securePass",
       "name": "Jane Smith",
+      "role": "user",
       "shippingAddress": "456 Elm St, Los Angeles, USA"
     },
     {
@@ -19,6 +21,7 @@
       "email": "user3@example.com",
       "password": "complexPwd",
       "name": "David Lee",
+      "role": "user",
       "shippingAddress": "789 Oak St, Chicago, USA"
     },
     {
@@ -26,7 +29,23 @@
       "email": "admin@example.com",
       "password": "admin123",
       "name": "Admin User",
+      "role": "user",
       "shippingAddress": "Admin HQ"
+    },
+    {
+      "id": 5,
+      "email": "admin@gmail.com",
+      "password": "admin1234",
+      "name": "Admin",
+      "role": "admin",
+      "shippingAddress": "Admin Office"
+    },
+    {
+      "name": "omer-sakr",
+      "email": "omer@gmail.com",
+      "password": "omer2001",
+      "role": "user",
+      "id": 6
     }
   ],
   "trips": [
@@ -40,7 +59,6 @@
       "id": 2,
       "name": "Beach",
       "description": "Camping and safari gear for desert adventures.",
-<<<<<<< HEAD
       "imageUrl": "categories/beach.png"
     },
     {
@@ -66,15 +84,6 @@
       "name": "Hiking",
       "description": "Camping and safari gear for desert adventures.",
       "imageUrl": "categories/hiking.png"
-=======
-      "imageUrl": "safari-trip.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Mountain Climbing",
-      "description": "Equipment for mountain adventures and climbing.",
-      "imageUrl": "mountain-climbing.jpg"
->>>>>>> origin/dashboard
     }
   ],
   "products": [
@@ -87,11 +96,7 @@
       "tripIds": [
         1
       ],
-<<<<<<< HEAD
       "imageUrl": "products/basketwande.png"
-=======
-      "imageUrl": "rod.jpg"
->>>>>>> origin/dashboard
     },
     {
       "id": 2,
@@ -100,15 +105,9 @@
       "price": 45,
       "stock": 30,
       "tripIds": [
-<<<<<<< HEAD
         4
       ],
       "imageUrl": "products/boiller.png"
-=======
-        1
-      ],
-      "imageUrl": "box.jpg"
->>>>>>> origin/dashboard
     },
     {
       "id": 3,
@@ -120,11 +119,7 @@
         1,
         2
       ],
-<<<<<<< HEAD
       "imageUrl": "products/coastSea.jpg"
-=======
-      "imageUrl": "hat.jpg"
->>>>>>> origin/dashboard
     },
     {
       "id": 4,
@@ -133,7 +128,6 @@
       "price": 250,
       "stock": 10,
       "tripIds": [
-<<<<<<< HEAD
         4
       ],
       "imageUrl": "products/tent.png"
@@ -339,22 +333,17 @@
         2
       ],
       "imageUrl": "products/wodenBeach Chairs.jpg"
-=======
-        2
-      ],
-      "imageUrl": "tent.jpg"
     },
     {
-      "id": 5,
-      "name": "Climbing Shoes",
-      "description": "High-grip climbing shoes for safety.",
-      "price": 99.99,
-      "stock": 20,
+      "name": "test-admin",
+      "description": "testing",
+      "price": 240,
+      "stock": 10,
+      "imageUrl": "products/test.png",
       "tripIds": [
-        3
+        6
       ],
-      "imageUrl": "climbing-shoes.jpg"
->>>>>>> origin/dashboard
+      "id": 23
     }
   ],
   "carts": [
@@ -363,18 +352,13 @@
       "userId": 1,
       "items": [
         {
-          "productId": 1,
-          "quantity": 2,
-          "price": 120.5
-        },
-        {
           "productId": 3,
-          "quantity": 7,
+          "quantity": 8,
           "price": 15
         },
         {
           "productId": 4,
-          "quantity": 1,
+          "quantity": 2,
           "price": 250
         },
         {
@@ -383,29 +367,22 @@
           "price": 45
         },
         {
-          "productId": 14,
-          "quantity": 2,
-<<<<<<< HEAD
-          "price": 250
-        },
-        {
-          "productId": 15,
-=======
-          "price": 15
+          "productId": 1,
+          "quantity": 1,
+          "price": 120.5
         }
       ]
     },
     {
-      "id": 2,
-      "userId": 2,
+      "userId": 6,
       "items": [
         {
           "productId": 4,
->>>>>>> origin/dashboard
           "quantity": 1,
           "price": 250
         }
-      ]
+      ],
+      "id": 2
     }
   ],
   "orders": [
@@ -413,7 +390,7 @@
       "id": 1,
       "userId": 1,
       "orderDate": "2023-10-25T10:30:00Z",
-      "status": "Paid",
+      "status": "delivered",
       "totalAmount": 150.5,
       "shippingAddress": "123 Main St, New York, USA",
       "items": [
@@ -426,41 +403,28 @@
           "productId": 3,
           "quantity": 2,
           "priceAtPurchase": 15
-<<<<<<< HEAD
-=======
         }
       ]
     },
     {
-      "id": 2,
-      "userId": 2,
-      "orderDate": "2023-11-01T15:45:00Z",
-      "status": "Shipped",
-      "totalAmount": 250,
-      "shippingAddress": "456 Elm St, Los Angeles, USA",
+      "userId": 6,
+      "orderDate": "2026-04-10T00:16:01.072Z",
+      "totalAmount": 67.2,
+      "status": "paid",
+      "shippingAddress": "Omer Sakr, Fariq Bahri Fouad Zekry Street, Arish, 44551",
       "items": [
         {
-          "productId": 4,
+          "productId": 2,
           "quantity": 1,
-          "priceAtPurchase": 250
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "orderDate": "2023-11-05T08:00:00Z",
-      "status": "Pending",
-      "totalAmount": 99.99,
-      "shippingAddress": "123 Main St, New York, USA",
-      "items": [
+          "price": 45
+        },
         {
-          "productId": 5,
+          "productId": 3,
           "quantity": 1,
-          "priceAtPurchase": 99.99
->>>>>>> origin/dashboard
+          "price": 15
         }
-      ]
+      ],
+      "id": 2
     }
   ]
 }

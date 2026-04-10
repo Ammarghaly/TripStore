@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -36,6 +36,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private router: Router
   ) {}
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    
+    const cartDropdown = target.closest('.cart-dropdown-container');
+    if (!cartDropdown && this.showCartDropdown) {
+      this.showCartDropdown = false;
+    }
+    
+    const userDropdown = target.closest('.user-dropdown-container');
+    if (!userDropdown && this.showUserMenu) {
+      this.showUserMenu = false;
+    }
+
+    const searchContainer = target.closest('.search-container');
+    if (!searchContainer && this.showSearchDropdown) {
+      this.showSearchDropdown = false;
+    }
+  }
 
   ngOnInit() {
     this.updateAuthState();
@@ -173,6 +193,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateToDashboard() {
     this.showUserMenu = false;
     this.router.navigate(['/admin/dashboard']);
+  }
+
+  navigateToOrders() {
+    this.showUserMenu = false;
+    this.router.navigate(['/bookings']);
   }
 
   ngOnDestroy() {

@@ -11,7 +11,7 @@ import { Product } from '../../../core/models/product';
   styleUrl: './products-page.component.css',
   host: {
     class: 'd-block min-vh-100',
-    '[style.background-color]': '"#181A19"',
+    style: 'background-color: #1A1A1A',
   },
 })
 export class ProductsPageComponent implements OnInit {
@@ -24,6 +24,16 @@ export class ProductsPageComponent implements OnInit {
   
   minPrice = signal(0);
   maxPrice = signal(500);
+
+  selectedTag: string | null = null;
+
+  get minPricePercent() {
+    return (this.minPrice() / 500) * 100;
+  }
+
+  get maxPricePercent() {
+    return (this.maxPrice() / 500) * 100;
+  }
 
   totalPages = computed(() => {
     return Math.ceil(this.filteredProducts().length / this.productService.pageSize);
@@ -58,9 +68,14 @@ export class ProductsPageComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.categoryId = Number(this.route.snapshot.paramMap.get('categoryId'));
+    const categoryIdParam = this.route.snapshot.paramMap.get('categoryId');
+    this.categoryId = categoryIdParam ? Number(categoryIdParam) : 0;
 
-    this.productService.setCategory(this.categoryId);
+    if (this.categoryId) {
+      this.productService.setCategory(this.categoryId);
+    } else {
+      this.productService.setCategory(null);
+    }
 
     this.productService.getProducts();
   }
@@ -71,10 +86,18 @@ export class ProductsPageComponent implements OnInit {
 
   selectCategory(categoryId: number | null) {
     this.productService.setCategory(categoryId);
-    this.productService.currentPage.set(1);
+    this.productService.goToPage(1);
   }
 
   onPriceChange() {
-    this.productService.currentPage.set(1);
+    if (this.minPrice() > this.maxPrice()) {
+      const temp = this.minPrice();
+      this.minPrice.set(this.maxPrice());
+      this.maxPrice.set(temp);
+    }
+  }
+
+  selectTag(tag: string) {
+    this.selectedTag = this.selectedTag === tag ? null : tag;
   }
 }

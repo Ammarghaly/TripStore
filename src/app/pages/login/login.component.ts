@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { AlertService } from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,11 @@ export class LoginComponent {
   loginForm: FormGroup;
   loginError: boolean = false;
 
-  private mockEmail = 'admin@test.com';
-  private mockPassword = '123456';
+  private authService = inject(AuthService);
+  private alertService = inject(AlertService);
+  private router = inject(Router);
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-  ) {
+  constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -26,15 +26,40 @@ export class LoginComponent {
   }
 
   login() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const { email, password } = this.loginForm.value;
 
-    if (email === this.mockEmail && password === this.mockPassword) {
-      this.loginError = false;
-      console.log('Login Successful!');
+    this.authService.login({ email, password }).subscribe({
+      next: (response) => {
+        this.loginError = false;
+        this.alertService.show('Success', 'Login successful!');
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        this.loginError = true;
+        this.alertService.show('Error', 'Incorrect email or password');
+      }
+    });
+  }
 
-      // this.router.navigate(['/home']);
-    } else {
-      this.loginError = true;
+  togglePassword(field: string) {
+    const input = document.getElementById(field) as HTMLInputElement;
+    if (input) {
+      input.type = input.type === 'password' ? 'text' : 'password';
+      
+      const icon = input.parentElement?.querySelector('.toggle-pass');
+      if (icon) {
+        if (input.type === 'text') {
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      }
     }
   }
 }

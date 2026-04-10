@@ -3,107 +3,199 @@ h2 {
 }
 
 .filter-sidebar {
-  background-color: #1F2121;
-  border-radius: 12px;
-  padding: 20px;
-  position: sticky;
-  top: 80px;
-}
-
-.filter-section h6 {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.category-btn {
-  background-color: #2a2c2c;
-  border: 1px solid #3a3c3c;
-  border-radius: 8px;
-  padding: 12px 8px;
-  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 12px;
-}
-
-.category-btn i {
-  font-size: 20px;
-}
-
-.category-btn:hover {
-  background-color: #3a3c3c;
-  border-color: #22c55e;
-}
-
-.category-btn.active {
-  background-color: #22c55e;
-  border-color: #22c55e;
-  color: #000;
-}
-
-.price-inputs {
-  display: flex;
-  gap: 10px;
-}
-
-.price-input-group {
-  flex: 1;
-}
-
-.price-input-group label {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.price-input-group input {
-  background-color: #2a2c2c;
-  border: 1px solid #3a3c3c;
-  color: #fff;
-}
-
-.price-input-group input:focus {
-  background-color: #2a2c2c;
-  border-color: #22c55e;
-  color: #fff;
-}
-
-.price-range-slider {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-range {
+  gap: 32px;
   width: 100%;
-}
-
-.form-range::-webkit-slider-thumb {
-  background-color: #22c55e;
-}
-
-.form-range::-moz-range-thumb {
-  background-color: #22c55e;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
   .filter-sidebar {
-    position: relative;
-    top: 0;
+    margin-bottom: 24px;
   }
-  
-  .category-grid {
+
+  .filter-buttons {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .filter-btn {
+    font-size: 12px;
+    padding: 8px 6px;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .filter-btn i {
+    font-size: 16px;
+  }
+
+  .filter-btn span {
+    font-size: 11px;
+  }
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-heading {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #F1F5F9;
+  margin: 0;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #A9ADAB;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.filter-btn i {
+  font-size: 18px;
+  color: #A9ADAB;
+  transition: color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(142, 164, 154, 0.1);
+}
+
+.filter-btn.active {
+  background: rgba(142, 164, 154, 0.2);
+  color: #8EA49A;
+}
+
+.filter-btn.active i {
+  color: #8EA49A;
+}
+
+.price-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-display {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #8EA49A;
+}
+
+.price-slider-container {
+  position: relative;
+  height: 40px;
+  margin-top: 8px;
+}
+
+.price-track {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #2F3131;
+  border-radius: 9999px;
+  top: 18px;
+}
+
+.price-range {
+  position: absolute;
+  height: 4px;
+  background: #8EA49A;
+  border-radius: 9999px;
+  top: 0;
+}
+
+.price-input {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  top: 18px;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.price-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #F1F5F9;
+  border: 2px solid #8EA49A;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.price-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #F1F5F9;
+  border: 2px solid #8EA49A;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.price-input-max {
+  z-index: 2;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-btn {
+  padding: 6px 12px;
+  background: #2F3131;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #A9ADAB;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tag-btn:hover {
+  background: rgba(142, 164, 154, 0.2);
+  color: #8EA49A;
+}
+
+@media (max-width: 768px) {
+  .filter-sidebar {
+    margin-bottom: 24px;
   }
 }

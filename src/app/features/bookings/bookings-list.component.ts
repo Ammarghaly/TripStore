@@ -1,16 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../core/services/auth.service';
+
+interface OrderItem {
+  productId: number;
+  quantity: number;
+  price: number;
+}
+
+interface Order {
+  id: number;
+  userId: number;
+  orderDate: string;
+  status: string;
+  totalAmount: number;
+  shippingAddress: string;
+  items: OrderItem[];
+}
 
 @Component({
   selector: 'app-bookings-list',
-  template: `
-    <div class="container text-white py-5">
-      <h2>Your Bookings</h2>
-      <p class="text-muted">(This is a placeholder bookings page.)</p>
-      <div class="card bg-dark text-light p-4 mt-3">
-        <strong>No bookings yet.</strong>
-      </div>
-    </div>
-  `,
+  templateUrl: './bookings-list.component.html',
+  styleUrls: ['./bookings-list.component.css'],
   standalone: false
 })
-export class BookingsListComponent {}
+export class BookingsListComponent implements OnInit {
+  private http = inject(HttpClient);
+  private authService = inject(AuthService);
+  
+  orders: Order[] = [];
+  loading = true;
+
+  ngOnInit() {
+    this.loadOrders();
+  }
+
+  loadOrders() {
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      this.loading = false;
+      return;
+    }
+
+    this.http.get<Order[]>(`http://localhost:3000/orders?userId=${userId}&_sort=orderDate&_order=desc`)
+      .subscribe({
+        next: (orders) => {
+          this.orders = orders;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error loading orders:', err);
+          this.loading = false;
+        }
+      });
+  }
+}

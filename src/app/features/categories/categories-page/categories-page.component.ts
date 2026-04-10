@@ -8,7 +8,7 @@ import { CategorySrvice } from '../../products/services/category.service';
   styleUrl: './categories-page.component.css',
   host:{
     class: 'd-block min-vh-100',
-    '[style.background-color]': '"#181A19"',
+    style: 'background-color: #1A1A1A'
   }
 })
 export class CategoriesPageComponent implements OnInit {
@@ -16,5 +16,8 @@ export class CategoriesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategories();
+  }
+
+  onCategoryClick(category: any) {
   }
 }

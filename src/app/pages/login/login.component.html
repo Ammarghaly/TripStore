@@ -1,6 +1,7 @@
 <main class="main-container">
-  <section class="login-img"></section>
-  <img src="Branding.png" alt="login-img" />
+  <section class="login-img">
+    <img src="Branding.png" alt="login-img" />
+  </section>
 
   <section class="form">
     <div class="form-content">
@@ -23,8 +24,8 @@
         </div>
         <div class="input">
           <i class="fa-solid fa-lock"></i>
-          <input type="password" formControlName="password" placeholder="••••••••" required />
-          <i class="fa-regular fa-eye toggle-pass"></i>
+          <input type="password" formControlName="password" placeholder="••••••••" id="loginPassword" required />
+          <i class="fa-regular fa-eye toggle-pass" (click)="togglePassword('loginPassword')"></i>
         </div>
         <a href="#" class="link-forgot">Forgot?</a>
       </div>
@@ -48,6 +49,6 @@
         Apple
       </button>
     </div>
-    <p class="footer-note">New explorer? <a href="#">Apply for entry</a></p>
+    <p class="footer-note">New explorer? <a routerLink="/register">Sign up now</a></p>
   </section>
 </main>
