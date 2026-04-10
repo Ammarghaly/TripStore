@@ -1,0 +1,17 @@
+.product-page{
+    background:#0b0f0d;
+    color:white;
+    min-height:100vh;
+}
+
+.main-section{
+    margin-bottom:70px;
+}
+
+.specs-section{
+    margin-top:50px;
+}
+
+.related-section{
+    margin-top:80px;
+}
