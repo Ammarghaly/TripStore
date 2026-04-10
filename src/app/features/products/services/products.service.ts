@@ -84,7 +84,6 @@ export class ProductsService {
         };
         this.http.post('http://localhost:3000/carts', newCart).subscribe({
           next: (res: any) => {
-            console.log('created cart', res);
             this.cartService.refreshCart();
             this.alertService.show('Success', 'Product added to cart successfully!');
           },

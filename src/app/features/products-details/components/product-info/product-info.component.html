@@ -1,44 +1,57 @@
-<h2 class="fw-bold mb-3">
-  {{product.name}}
-</h2>
-
-
-<h4 class="text-success mb-3">
-  ${{product.price}}
-</h4>
-
-
-<p class="text-muted mb-4">
-  {{product.description}}
-</p>
-
-
-<p class="fw-semibold">
-  Stock: {{product.stock}}
-</p>
-
-
-<div class="d-flex gap-3 align-items-center my-4">
-
-  <button
-  class="btn btn-outline-dark"
-  (click)="decreaseQ()">
-    -
-  </button>
-
-
-  <span>{{quantity}}</span>
-
-
-  <button
-  class="btn btn-outline-dark"
-  (click)="increaseQ()">
-    +
-  </button>
-
+<div class="product-info">
+  <div class="badge-premium">PREMIUM COLLECTION</div>
+  
+  <h1 class="product-title">{{product.name}}</h1>
+  
+  <div class="product-price">${{product.price}}</div>
+  
+  <p class="product-description">{{product.description}}</p>
+  
+  <div class="features-list">
+    <div class="feature-item">
+      <div class="feature-icon"></div>
+      <span class="feature-text">Eco-friendly natural construction</span>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"></div>
+      <span class="feature-text">Insulated compartment for temperature control</span>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"></div>
+      <span class="feature-text">Complete set for 4 people</span>
+    </div>
+  </div>
+  
+  <div class="purchase-section">
+    <div class="quantity-selector">
+      <button class="quantity-btn" (click)="decreaseQ()">−</button>
+      <div class="quantity-value">{{quantity}}</div>
+      <button class="quantity-btn" (click)="increaseQ()">+</button>
+    </div>
+    
+    <button class="add-to-cart-btn" (click)="addToCart()">
+      <svg class="cart-icon" viewBox="0 0 16 20" fill="currentColor">
+        <path d="M0 20V6h4V4c0-1.1.4-2.042 1.2-2.825C5.933.392 6.867 0 8 0s2.067.392 2.8 1.175C11.6 1.958 12 2.9 12 4v2h4v14H0zm8-14c.55 0 1.02-.196 1.413-.587.391-.392.587-.863.587-1.413s-.196-1.02-.587-1.413A1.926 1.926 0 008 2c-.55 0-1.02.196-1.413.587A1.926 1.926 0 006 4c0 .55.196 1.02.587 1.413.392.391.863.587 1.413.587z"/>
+      </svg>
+      Add to Cart
+    </button>
+  </div>
+  
+  <div class="specifications">
+    <h3 class="spec-title">Specifications</h3>
+    <div class="spec-table">
+      <div class="spec-row">
+        <div class="spec-label">Product ID</div>
+        <div class="spec-value">#{{product.id}}</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Stock</div>
+        <div class="spec-value">{{product.stock}} units available</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Price</div>
+        <div class="spec-value">${{product.price}}</div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<button class="btn btn-success px-5">
-  Add To Cart
-</button>

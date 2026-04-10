@@ -21,6 +21,6 @@ export class ProductCardComponent {
   }
 
   goToDetails() {
-  this.router.navigate(['/product-details', this.product.id]);
+  this.router.navigate(['/product', this.product.id]);
 }
 }

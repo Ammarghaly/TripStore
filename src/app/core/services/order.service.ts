@@ -34,9 +34,6 @@ export class OrderService {
       concatMap(createdOrder => {
         // Clear cart by sending empty items array
         return this.http.patch<Cart>(`${this.apiUrl}/carts/${cartId}`, { items: [] }).pipe(
-          // Return the created order after cart is cleared
-          tap(() => console.log('Cart cleared successfully after order creation')),
-          // Map back to the order (ignore cart response)
           concatMap(() => [createdOrder])
         );
       })

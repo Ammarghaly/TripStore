@@ -10,35 +10,39 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent implements OnInit {
-route =inject(ActivatedRoute);
-
+  route = inject(ActivatedRoute);
   productSer = inject(Product);
 
   products: Iproduct[] = [];
-
   Product!: Iproduct;
-
   relatedProducts: Iproduct[] = [];
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+      this.loadProduct(id);
+    });
+  }
 
+  loadProduct(id: number): void {
+    window.scrollTo(0, 0);
 
-ngOnInit(): void {
+    this.productSer.getProductById(id).subscribe({
+      next: (res) => {
+        this.Product = res;
+      },
+      error: (err) => {
+        console.error('Error loading product:', err);
+      }
+    });
 
-  const id = Number(
-    this.route.snapshot.paramMap.get('id')
-  );
-
-  this.productSer.getProductById(id).subscribe({
-
-    next:(res)=>{
-      this.Product = res;
-    },
-
-    error:(err)=>{
-      console.log(err);
-    }
-
-  });
-
-}
+    this.productSer.getProducts().subscribe({
+      next: (res) => {
+        this.relatedProducts = res.filter(p => p.id !== id).slice(0, 3);
+      },
+      error: (err) => {
+        console.error('Error loading related products:', err);
+      }
+    });
+  }
 }

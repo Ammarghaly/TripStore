@@ -15,6 +15,7 @@ import { CategoriesComponent } from './features/categories/categories.component'
 import { UsersComponent } from './features/users/users.component';
 import { AdminGuard } from './core/guards/admin.guard';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { ProductPageComponent } from './features/products-details/pages/product-page/product-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesPageComponent },
   { path: 'products', component: ProductsPageComponent },
   { path: 'products/:categoryId', component: ProductsPageComponent },
+  { path: 'product/:id', component: ProductPageComponent },
   {
     path: 'admin',
     component: AdminLayoutComponent,

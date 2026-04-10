@@ -1,46 +1,19 @@
-<div class="product-page container py-5">
-
+<div class="product-page">
   @if(Product){
+    <div class="container-custom">
+      <div class="product-container">
+        <div class="product-gallery-section">
+          <app-product-gallery [image]="Product.imageUrl"></app-product-gallery>
+        </div>
 
-    <div class="row align-items-start main-section">
-
-      <div class="col-lg-6">
-
-        <app-product-gallery
-        [image]="Product.imageUrl">
-        </app-product-gallery>
-
+        <div class="product-details-section">
+          <app-product-info [product]="Product"></app-product-info>
+        </div>
       </div>
 
-
-      <div class="col-lg-6">
-
-        <app-product-info
-        [product]="Product">
-        </app-product-info>
-
+      <div class="related-section">
+        <app-related-products [products]="relatedProducts"></app-related-products>
       </div>
-
     </div>
-
-
-    <div class="specs-section mt-5">
-
-      <app-product-specs
-      [product]="Product.mainProduct">
-      </app-product-specs>
-
-    </div>
-
-
-    <div class="related-section mt-5">
-
-      <app-related-products
-      [products]="Product.relatedProducts">
-      </app-related-products>
-
-    </div>
-
   }
-
 </div>

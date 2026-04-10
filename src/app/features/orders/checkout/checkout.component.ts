@@ -116,6 +116,12 @@ export class CheckoutComponent implements OnInit {
         expiry: '12/25',
         cvc: '123'
       });
+    } else {
+      this.checkoutForm.patchValue({
+        cardNumber: '',
+        expiry: '',
+        cvc: ''
+      });
     }
   }
 

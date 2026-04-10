@@ -79,7 +79,7 @@ export class CartComponent implements OnInit {
     }));
     
     this.cartService.updateCartItems(this.cartId, items).subscribe({
-      next: (res: any) => console.log('Cart updated locally via PATCH', res),
+      next: (res: any) => {},
       error: (err: any) => console.error('Failed to update cart', err)
     });
   }

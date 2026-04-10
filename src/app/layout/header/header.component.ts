@@ -120,14 +120,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSearchInput() {
-    console.log('Search query:', this.searchQuery);
     if (this.searchQuery.trim().length > 0) {
       this.http.get(`http://localhost:3000/products?q=${this.searchQuery}`)
         .subscribe((results: any) => {
-          console.log('Search results:', results);
           this.searchResults = results;
           this.showSearchDropdown = true;
-          console.log('Dropdown should show:', this.showSearchDropdown);
         });
     } else {
       this.searchResults = [];
@@ -136,9 +133,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   selectProduct(product: any) {
-    console.log('Selected:', product);
     this.showSearchDropdown = false;
     this.searchQuery = '';
+    this.router.navigate(['/product', product.id]);
   }
 
   hideSearchDropdown() {

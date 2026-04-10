@@ -36,6 +36,11 @@ import { ProductsComponent } from './features/products/products.component';
 import { CategoriesComponent } from './features/categories/categories.component';
 import { UsersComponent } from './features/users/users.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { ProductPageComponent } from './features/products-details/pages/product-page/product-page.component';
+import { ProductGalleryComponent } from './features/products-details/components/product-gallery/product-gallery.component';
+import { ProductInfoComponent } from './features/products-details/components/product-info/product-info.component';
+import { ProductSpecsComponent } from './features/products-details/components/product-specs/product-specs.component';
+import { RelatedProductsComponent } from './features/products-details/components/related-products/related-products.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,12 @@ import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.compone
     ProductsComponent,
     CategoriesComponent,
     UsersComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    ProductPageComponent,
+    ProductGalleryComponent,
+    ProductInfoComponent,
+    ProductSpecsComponent,
+    RelatedProductsComponent
   ],
   imports: [
     BrowserModule,
