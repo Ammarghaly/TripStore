@@ -1,5 +1,6 @@
+<app-navbar (sidebarToggle)="toggleSidebar()"></app-navbar>
 <div class="admin-container">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [class.show]="sidebarOpen"></app-sidebar>
   <div class="main-wrapper">
     <router-outlet></router-outlet>
   </div>

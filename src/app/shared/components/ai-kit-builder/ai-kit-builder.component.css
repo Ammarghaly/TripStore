@@ -17,6 +17,24 @@
   isolation: isolate;
 }
 
+.status-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 8px 24px;
+  background: transparent;
+  border: 2px solid #c4a700;
+  border-radius: 50px;
+  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #c4a700;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(201, 182, 38, 0.2);
+}
+
 .icon-background {
   position: absolute;
   left: 64.33%;
@@ -160,6 +178,14 @@
   .ai-card {
     padding: 24px 20px;
     border-radius: 20px;
+  }
+
+  .status-badge {
+    top: 16px;
+    right: 16px;
+    padding: 6px 16px;
+    font-size: 10px;
+    letter-spacing: 1px;
   }
 
   .heading {

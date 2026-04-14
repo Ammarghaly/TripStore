@@ -375,7 +375,13 @@
     },
     {
       "userId": 6,
-      "items": [],
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 1,
+          "price": 120.5
+        }
+      ],
       "id": 2
     }
   ],

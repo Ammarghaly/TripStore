@@ -3,6 +3,8 @@ import { Iproduct } from '../../model/product-interface';
 import { CartService } from '../../../../core/services/cart.service';
 import { AlertService } from '../../../../shared/alert/alert.service';
 import { CartItem } from '../../../../core/models/cart.model';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-info',
@@ -18,6 +20,8 @@ export class ProductInfoComponent {
 
   private cartService = inject(CartService);
   private alertService = inject(AlertService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   increaseQ(){
     this.quantity++;
@@ -30,6 +34,17 @@ export class ProductInfoComponent {
   }
 
   addToCart() {
+    if (!this.authService.isAuthenticated()) {
+      this.alertService.confirm(
+        'Login Required',
+        'Please login to add items to cart',
+        () => {
+          this.router.navigate(['/login']);
+        }
+      );
+      return;
+    }
+
     this.cartService.getCart().subscribe({
       next: (result) => {
         const cartItem: CartItem = {

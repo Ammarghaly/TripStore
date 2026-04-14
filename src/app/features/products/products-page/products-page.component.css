@@ -2,6 +2,10 @@ h2 {
   letter-spacing: 1px;
 }
 
+.container {
+  margin-top: 70px;
+}
+
 .filter-sidebar {
   display: flex;
   flex-direction: column;
@@ -15,26 +19,22 @@ h2 {
     margin-bottom: 24px;
   }
 
-  .filter-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
   .filter-btn {
     font-size: 12px;
-    padding: 8px 6px;
+    padding: 12px 8px;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     text-align: center;
+    justify-content: center;
   }
 
   .filter-btn i {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .filter-btn span {
     font-size: 11px;
+    line-height: 1.2;
   }
 }
 
@@ -59,6 +59,14 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .filter-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px;
+  }
 }
 
 .filter-btn {
@@ -192,10 +200,4 @@ h2 {
 .tag-btn:hover {
   background: rgba(142, 164, 154, 0.2);
   color: #8EA49A;
-}
-
-@media (max-width: 768px) {
-  .filter-sidebar {
-    margin-bottom: 24px;
-  }
 }
