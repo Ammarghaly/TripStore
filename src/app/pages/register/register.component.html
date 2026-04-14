@@ -16,7 +16,8 @@
           class="error-msg"
           *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
         >
-          Full Name is required.
+          <span *ngIf="registerForm.get('fullName')?.errors?.['required']">Full Name is required.</span>
+          <span *ngIf="registerForm.get('fullName')?.errors?.['whitespace']">Full Name cannot be empty spaces.</span>
         </div>
       </div>
 
@@ -32,6 +33,7 @@
         >
           <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
           <span *ngIf="registerForm.get('email')?.errors?.['email']">Email must be valid.</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['whitespace']">Email cannot be empty spaces.</span>
         </div>
       </div>
 
@@ -52,6 +54,9 @@
           <span *ngIf="registerForm.get('password')?.errors?.['minlength']"
             >Password must be at least 6 characters.</span
           >
+          <span *ngIf="registerForm.get('password')?.errors?.['whitespace']"
+            >Password cannot be empty spaces.</span
+          >
         </div>
       </div>
 
@@ -69,7 +74,8 @@
             registerForm.get('confirmPassword')?.invalid
           "
         >
-          Confirm Password is required.
+          <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+          <span *ngIf="registerForm.get('confirmPassword')?.errors?.['whitespace']">Confirm Password cannot be empty spaces.</span>
         </div>
         <div class="error-msg" *ngIf="passwordMismatch">Passwords do not match.</div>
       </div>

@@ -16,6 +16,14 @@
           <i class="fa-regular fa-envelope"></i>
           <input type="email" formControlName="email" placeholder="explorer@tripia.com" required />
         </div>
+        <div
+          class="error-msg"
+          *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+        >
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Email must be valid.</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['whitespace']">Email cannot be empty spaces.</span>
+        </div>
       </div>
 
       <div class="inputs-group">
@@ -26,6 +34,13 @@
           <i class="fa-solid fa-lock"></i>
           <input type="password" formControlName="password" placeholder="••••••••" id="loginPassword" required />
           <i class="fa-regular fa-eye toggle-pass" (click)="togglePassword('loginPassword')"></i>
+        </div>
+        <div
+          class="error-msg"
+          *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+        >
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+          <span *ngIf="loginForm.get('password')?.errors?.['whitespace']">Password cannot be empty spaces.</span>
         </div>
         <a href="#" class="link-forgot">Forgot?</a>
       </div>

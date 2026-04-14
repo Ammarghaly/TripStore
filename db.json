@@ -53,6 +53,13 @@
       "password": "omer2001",
       "role": "user",
       "id": 7
+    },
+    {
+      "name": "mazen",
+      "email": "mezo@gmail.com",
+      "password": "omer2001",
+      "role": "user",
+      "id": 8
     }
   ],
   "trips": [

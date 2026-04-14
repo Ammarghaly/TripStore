@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { AlertService } from '../../shared/alert/alert.service';
@@ -20,12 +20,19 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
+  noWhitespaceValidator(control: AbstractControl): ValidationErrors | null {
+    if (control.value && control.value.trim().length === 0) {
+      return { whitespace: true };
+    }
+    return null;
+  }
+
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
+      fullName: ['', [Validators.required, this.noWhitespaceValidator]],
+      email: ['', [Validators.required, Validators.email, this.noWhitespaceValidator]],
+      password: ['', [Validators.required, Validators.minLength(6), this.noWhitespaceValidator]],
+      confirmPassword: ['', [Validators.required, this.noWhitespaceValidator]],
     });
 
     this.registerForm.valueChanges.subscribe(() => {
