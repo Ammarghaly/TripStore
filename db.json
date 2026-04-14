@@ -46,6 +46,13 @@
       "password": "omer2001",
       "role": "user",
       "id": 6
+    },
+    {
+      "name": "ABDLULLAH",
+      "email": "abdullah@gmail.com",
+      "password": "omer2001",
+      "role": "user",
+      "id": 7
     }
   ],
   "trips": [
@@ -375,14 +382,24 @@
     },
     {
       "userId": 6,
+      "items": [],
+      "id": 2
+    },
+    {
+      "userId": 5,
+      "items": [],
+      "id": 3
+    },
+    {
+      "userId": 7,
       "items": [
         {
-          "productId": 1,
+          "productId": 2,
           "quantity": 1,
-          "price": 120.5
+          "price": 45
         }
       ],
-      "id": 2
+      "id": 4
     }
   ],
   "orders": [
@@ -430,7 +447,7 @@
       "userId": 6,
       "orderDate": "2026-04-10T01:37:18.624Z",
       "totalAmount": 560,
-      "status": "pending",
+      "status": "shipped",
       "shippingAddress": "Omer Sakr, Fariq Bahri Fouad Zekry Street, Arish, 44551",
       "items": [
         {

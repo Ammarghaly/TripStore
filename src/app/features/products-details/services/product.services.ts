@@ -22,18 +22,5 @@ getProductById(id:number){
 }
 
 
-  get productList(): Iproduct[] {
-    return this.products;
-  }
-
-
-  get mainProduct(): Iproduct {
-    return this.products[0];
-  }
-
-
-  get relatedProducts(): Iproduct[] {
-    return this.products.slice(1);
-  }
 
 }
