@@ -56,7 +56,7 @@
     },
     {
       "name": "mazen",
-      "email": "mezo@gmail.com",
+      "email": "mazen@gmail.com",
       "password": "omer2001",
       "role": "user",
       "id": 8
@@ -107,9 +107,7 @@
       "description": "Flexible carbon fiber rod, handles heavy weights.",
       "price": 120.5,
       "stock": 15,
-      "tripIds": [
-        1
-      ],
+      "tripIds": [1],
       "imageUrl": "products/basketwande.png"
     },
     {
@@ -118,9 +116,7 @@
       "description": "Compartmentalized box for baits and hooks.",
       "price": 45,
       "stock": 30,
-      "tripIds": [
-        4
-      ],
+      "tripIds": [4],
       "imageUrl": "products/boiller.png"
     },
     {
@@ -129,10 +125,7 @@
       "description": "Wide-brimmed hat to protect face and head from the sun.",
       "price": 15,
       "stock": 50,
-      "tripIds": [
-        1,
-        2
-      ],
+      "tripIds": [1, 2],
       "imageUrl": "products/coastSea.jpg"
     },
     {
@@ -141,9 +134,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        4
-      ],
+      "tripIds": [4],
       "imageUrl": "products/tent.png"
     },
     {
@@ -152,9 +143,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        3
-      ],
+      "tripIds": [3],
       "imageUrl": "products/griller.png"
     },
     {
@@ -163,9 +152,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        6
-      ],
+      "tripIds": [6],
       "imageUrl": "products/Backpack Hiking.jpg"
     },
     {
@@ -174,9 +161,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        3
-      ],
+      "tripIds": [3],
       "imageUrl": "products/Barbecue Hand Fan.jpg"
     },
     {
@@ -185,9 +170,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        3
-      ],
+      "tripIds": [3],
       "imageUrl": "products/BBQ Natural Charcoal.jpg"
     },
     {
@@ -196,9 +179,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        2
-      ],
+      "tripIds": [2],
       "imageUrl": "products/Beach Lounger.jpg"
     },
     {
@@ -207,10 +188,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        4,
-        6
-      ],
+      "tripIds": [4, 6],
       "imageUrl": "products/Camping Sleeping Bag.jpg"
     },
     {
@@ -219,9 +197,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        5
-      ],
+      "tripIds": [5],
       "imageUrl": "products/Fishing Accessories Kit.jpg"
     },
     {
@@ -230,9 +206,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        5
-      ],
+      "tripIds": [5],
       "imageUrl": "products/FISHMAN 300 Boat Set.jpg"
     },
     {
@@ -241,10 +215,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        4,
-        6
-      ],
+      "tripIds": [4, 6],
       "imageUrl": "products/Flashlight Rechargeable Torch.jpg"
     },
     {
@@ -253,10 +224,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        1,
-        2
-      ],
+      "tripIds": [1, 2],
       "imageUrl": "products/Folding Beach Chair.jpg"
     },
     {
@@ -265,9 +233,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        1
-      ],
+      "tripIds": [1],
       "imageUrl": "products/PicnicBlanket.jpg"
     },
     {
@@ -276,9 +242,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        6
-      ],
+      "tripIds": [6],
       "imageUrl": "products/Rain Ponchos.jpg"
     },
     {
@@ -287,9 +251,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        5
-      ],
+      "tripIds": [5],
       "imageUrl": "products/Stainless Steel Snaps.jpg"
     },
     {
@@ -298,9 +260,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        5
-      ],
+      "tripIds": [5],
       "imageUrl": "products/StickFishing Rod.jpg"
     },
     {
@@ -309,9 +269,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        6
-      ],
+      "tripIds": [6],
       "imageUrl": "products/Thermal Warm Winter Gloves.jpg"
     },
     {
@@ -320,9 +278,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        6
-      ],
+      "tripIds": [6],
       "imageUrl": "products/TREKKING SHOES Sneaker.jpg"
     },
     {
@@ -331,9 +287,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        3
-      ],
+      "tripIds": [3],
       "imageUrl": "products/trick meat.jpg"
     },
     {
@@ -342,10 +296,7 @@
       "description": "Pop-up tent, wind resistant.",
       "price": 250,
       "stock": 10,
-      "tripIds": [
-        1,
-        2
-      ],
+      "tripIds": [1, 2],
       "imageUrl": "products/wodenBeach Chairs.jpg"
     },
     {
@@ -354,9 +305,7 @@
       "price": 240,
       "stock": 10,
       "imageUrl": "products/test.png",
-      "tripIds": [
-        6
-      ],
+      "tripIds": [6],
       "id": 23
     }
   ],
